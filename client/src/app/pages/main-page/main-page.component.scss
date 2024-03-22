@@ -1,28 +1,9 @@
 body {
-    background-color: #f8c0cb;
-    background-image: linear-gradient(45deg, #f8c0cb, #add8e6);
-    background-size: 400% 400%;
-    background-repeat: no-repeat;
-    animation: gradientAnimation 8s ease infinite;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .login-container {
@@ -181,4 +162,10 @@ ul {
 
 .about {
     color: black;
+}
+
+@media (max-width: 750px) {
+    .login-container{
+        width: 100%;
+    }
 }
