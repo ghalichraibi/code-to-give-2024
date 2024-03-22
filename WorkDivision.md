@@ -1,5 +1,12 @@
 # Le Chainon's new web portal "StepByStep"
 
+## Version Control
+
+- We prioritize structured branching and adhere to proper PR etiquette from the project's inception.
+- Our workflow emphasizes the importance of meaningful commits and timely conflict resolution.
+- As deadlines approach, the intensity of development may challenge our disciplined approach.
+- Despite potential chaos, we endeavor to minimize disruptions and uphold stability in our codebase.
+
 ## 1. Landing Page
    - Description: Welcome page introducing the purpose of the application and its significance for Le Chaînon.
    - Components:
@@ -42,16 +49,16 @@
 ## Team Size: 10 people
 
 ### Team Members:
-1. Ayyanar Kadalkani :
-2. Étienne Lazure :
-3. Gaetan Florio :
-4. Ghali Chraibi :
-5. Ihsane Majdoubi :
-6. Marc-Antoine Manningham :
-7. Maria Bourouisa :
-8. Nassour Nassour :
-9. Omar Benzekri :
-10. Philippe Tsoy :
+1. Ayyanar Kadalkani : *Ideas :* Complete process flow, Complete dashboard; *Work :* Front-end (angular)
+2. Étienne Lazure : *Work :* Front-end
+3. Gaetan Florio : *Work :* Back-end and Integration
+4. Ghali Chraibi : *Ideas :* Version system like google docs to see the history of forms, Keep it simple; *Work :*Integration with back-end, really full-stack (perfect man)
+5. Ihsane Majdoubi : *Work :* Front-end
+6. Marc-Antoine Manningham : *Work :* Back-end and Integration
+7. Maria Bourouisa : *Work :* Front-end, UI and Integration with the back-end
+8. Nassour Nassour : *Work :* Front-end/back-end
+9. Omar Benzekri : *Work :* UI and Landing Page
+10. Philippe Tsoy : *Work :* Database and front-end
 
 ### Tasks:
 1. Frontend Development
@@ -67,13 +74,14 @@
 
 ## Detailed Task Allocation:
 1. Frontend Development:
-   - Landing Page: 1 person
-   - Caregiver Dashboard: 2 people
-   - Resident Portal: 1 person
+   - Landing Page: 1 person: Omar
+   - Caregiver Dashboard: 3 people: Ayyanar, Éthienne, Omar
+   - Resident Portal: 3 person : Phillipe, Maria, Ihsane
 2. Backend Development:
-   - API Development: 2 people
+   - Integration: 3 people: Ghali, Marc-Antoine, Gaetan
+   - API Development: 3 people: Ghali, Marc-Antoine, Gaetan
    - Authentication & Authorization: 1 person
 3. Database Design:
-   - Database Schema Design: 2 people
+   - Database Schema Design: 3 people: Ghali, Marc-Antoine, Gaetan
 4. UI Design:
-   - Wireframing & Prototyping: 1 person
+   - Wireframing & Prototyping: 1 person: Omar
