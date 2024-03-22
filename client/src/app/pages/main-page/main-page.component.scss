@@ -1,11 +1,88 @@
-.container {
-    min-height: 100vh;
+body {
+    background-color: #f8c0cb;
+    background-image: linear-gradient(45deg, #f8c0cb, #add8e6);
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+    animation: gradientAnimation 5s ease infinite;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-container {
+    height: 100%;
+    width: 30%;
+    background-color: white;
+    opacity: 0.4;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.info-project {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    gap: 10px;
+}
+
+.project-logo {
+    width: 6vmin;
     height: auto;
 }
 
-.justified {
+h1 {
+    font-size: 5vmin;
+    margin: 0;
+}
+
+.login {
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.564);
+}
+
+.options {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    background-color: #4CAF50;
+    border-radius: 50px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.option {
+    width: 33%;
+    border: none;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.option:hover, .option:focus {
+    background-color: rgba(0, 0, 0, 0.1);
 }
