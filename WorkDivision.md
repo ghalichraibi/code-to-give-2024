@@ -41,6 +41,18 @@
 
 ## Team Size: 10 people
 
+### Team Members:
+1. Ayyanar Kadalkani :
+2. Étienne Lazure :
+3. Gaetan Florio :
+4. Ghali Chraibi :
+5. Ihsane Majdoubi :
+6. Marc-Antoine Manningham :
+7. Maria Bourouisa :
+8. Nassour Nassour :
+9. Omar Benzekri :
+10. Philippe Tsoy :
+
 ### Tasks:
 1. Frontend Development
 2. Backend Development
