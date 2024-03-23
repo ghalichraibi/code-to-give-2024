@@ -9,6 +9,9 @@ import { DateService } from '@app/services/date/date.service';
 import { ChatGateway } from '@app/gateways/chat/chat.gateway';
 import { ExampleService } from '@app/services/example/example.service';
 import { ExampleController } from '@app/controllers/example/example.controller';
+import { User, userSchema } from './model/database/user';
+import { UserController } from './controllers/user/user.controller';
+import { UserService } from './services/user/user.service';
 
 @Module({
     imports: [
@@ -20,9 +23,9 @@ import { ExampleController } from '@app/controllers/example/example.controller';
                 uri: config.get<string>('DATABASE_CONNECTION_STRING'), // Loaded from .env
             }),
         }),
-        MongooseModule.forFeature([{ name: Course.name, schema: courseSchema }]),
+        MongooseModule.forFeature([{ name: User.name, schema: userSchema }]),
     ],
-    controllers: [CourseController, DateController, ExampleController],
-    providers: [ChatGateway, CourseService, DateService, ExampleService, Logger],
+    controllers: [UserController],
+    providers: [ChatGateway, UserService, Logger],
 })
 export class AppModule {}

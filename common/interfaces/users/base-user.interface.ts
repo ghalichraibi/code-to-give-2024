@@ -4,7 +4,7 @@ export type UserId = string;
 
 export interface BaseUser {
     role: UserRoles;
-    id: UserId;
+    uid: UserId;
     firstName: string;
     lastName: string;
     email: string;
