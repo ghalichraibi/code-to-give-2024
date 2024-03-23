@@ -1,7 +1,7 @@
 export enum CaregiverDashboardOptions {
     Residents = 'Residents',
     Statistics = 'Statistics',
-    Events = 'Events',
-    PriorityList = 'Priority List',
-    TreatmentTeam = 'Treatment Team',
+    Calendar = 'Calendar',
+    AuditTrail = 'Audit Trail',
+    Chat = 'Chat',
 }

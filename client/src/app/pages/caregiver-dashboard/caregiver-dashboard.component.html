@@ -8,10 +8,11 @@
     </div>
 
     <div class = "selected-option">
-        <app-personal-information *ngIf="selectedOption === 'Personal Information' "></app-personal-information>
-        <app-objectives *ngIf="selectedOption === 'Objectives' "></app-objectives>
-        <app-resources *ngIf="selectedOption === 'Resources' "></app-resources>
-        <app-calendar *ngIf="selectedOption === 'Calendar' "></app-calendar>
+      <app-residents *ngIf="selectedOption === 'Residents' "></app-residents>
+      <app-statistics *ngIf="selectedOption === 'Statistics' "></app-statistics>
+      <app-calendar *ngIf="selectedOption === 'Calendar' "></app-calendar>
+      <app-audit-trail *ngIf="selectedOption === 'Audit Trail' "></app-audit-trail>
+      <app-chat *ngIf="selectedOption === 'Chat' "></app-chat>
     </div>
   </div>
 </body>

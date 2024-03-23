@@ -1,67 +1,45 @@
-.spacer {
-  flex: 1 1 auto;
-}
-.project-logo {
-  width: 6vmin;
-  height: auto;
-  align-self: center;
-}
-mat-toolbar {
-  background-color: #7191bb;
-  color: #ffffff;
-  height: 70px;
+.content-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  gap: 10px;
+}
+
+.options-container {
+  display: contents;
+  width: 100%;
+}
+
+.options {
+  user-select: none;
+  display: flex;
   justify-content: space-between;
-  align-items: center;
+  background-color: #4CAF50;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 100%;
 }
 
-.stepbystep {
-  font-size: 5vmin;
-  margin: 0;
-  padding-left: 5%;
-  align-self: center;
+.option {
+  width: 33%;
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
 }
 
-.logo {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  padding-right: 8px;
+.option.selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.toolbar-button {
-  margin-right: 10px;
-}
-
-.sidenav-container {
-  flex: 1;
-}
-
-.is-mobile .sidenav-container {
-  flex: 1 0 auto;
-}
-
-.mdc-list-item {
-    padding-top: 8%;
-}
-
-mat-sidenav {
-    width: 200px;
-}
-
-.greetings {
-    padding-left: 5%;
-}
-
-.form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-    display: flex;
-    padding-left: 35%;
-}
-
-.resident-search {
-    width: 100%;
+.selected-option {
+  width: -webkit-fill-available;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 15px;
 }

@@ -15,6 +15,10 @@ import { ObjectivesComponent } from './components/objectives/objectives.componen
 import { HeaderComponent } from './components/header/header.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { CaregiverDashboardComponent } from './pages/caregiver-dashboard/caregiver-dashboard.component';
+import { ResidentsComponent } from './components/residents/residents.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 /**
  * Main module that is used in main.ts.
@@ -23,7 +27,7 @@ import { CaregiverDashboardComponent } from './pages/caregiver-dashboard/caregiv
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent],
+    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent, ResidentsComponent, StatisticsComponent, AuditTrailComponent, ChatComponent],
     imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],
