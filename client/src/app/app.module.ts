@@ -8,6 +8,7 @@ import { AppMaterialModule } from '@app/modules/material.module';
 import { AppComponent } from '@app/pages/app/app.component';
 import { MainPageComponent } from '@app/pages/main-page/main-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { CaregiverDashboardComponent } from './pages/caregiver-dashboard/caregiver-dashboard.component';
 
 /**
  * Main module that is used in main.ts.
@@ -16,7 +17,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AboutPageComponent],
+    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent],
     imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],

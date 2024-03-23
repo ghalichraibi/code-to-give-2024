@@ -1,0 +1,67 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.project-logo {
+  width: 6vmin;
+  height: auto;
+  align-self: center;
+}
+mat-toolbar {
+  background-color: #7191bb;
+  color: #ffffff;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stepbystep {
+  font-size: 5vmin;
+  margin: 0;
+  padding-left: 5%;
+  align-self: center;
+}
+
+.logo {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-right: 8px;
+}
+
+.toolbar-button {
+  margin-right: 10px;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+.mdc-list-item {
+    padding-top: 8%;
+}
+
+mat-sidenav {
+    width: 200px;
+}
+
+.greetings {
+    padding-left: 5%;
+}
+
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    padding-left: 35%;
+}
+
+.resident-search {
+    width: 100%;
+}
