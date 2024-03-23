@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ResidentPortalOptions } from '@app/enums/residentPortalOptions.enum';
-// import { PersonalInformationComponent } from './personal-information/personal-information.component';
 
 @Component({
   selector: 'app-resident-portal',
