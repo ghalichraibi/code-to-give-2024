@@ -1,38 +1,17 @@
-<div>
-  <mat-toolbar>
-    <div class="logo">
-      <img
-        src="./assets/logo.png"
-        alt="project logo"
-        class="project-logo"
-      /><span class="stepbystep">StepByStep</span>
+<body>
+  <app-header></app-header>
+  <div class="content-container">
+    <div class="options-container">
+        <div class = options>
+            <button *ngFor="let option of options" class="option" [ngClass]="{'selected': selectedOption === option}" (click)="selectOption(option)">{{option}}</button>
+        </div>
     </div>
-    <span class="spacer"></span>
-    <button mat-raised-button class="toolbar-button">Global Statistics</button>
-    <button mat-raised-button class="toolbar-button">Create Event</button>
-    <button mat-raised-button class="toolbar-button">Log Out</button>
-  </mat-toolbar>
 
-  <!--Based on "Creating a responsive layout for mobile & desktop" on https://v16.material.angular.io/components/sidenav/overview-->
-  <mat-sidenav-container class="sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav opened [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item routerLink="." >Priority List</a>
-        <a mat-list-item routerLink="." >Treatment Team</a>
-        <a mat-list-item routerLink="." >Group Residents</a>
-      </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-        <h1 class="greetings">Hello, {{caregiver}}!</h1>
-        <form class="form">
-            <mat-form-field class="resident-search">
-                <mat-label>Resident ID/Name</mat-label>
-                <input matInput placeholder="Enter the resident's ID or full name" style="height:100px">
-            </mat-form-field>
-        </form>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+    <div class = "selected-option">
+        <app-personal-information *ngIf="selectedOption === 'Personal Information' "></app-personal-information>
+        <app-objectives *ngIf="selectedOption === 'Objectives' "></app-objectives>
+        <app-resources *ngIf="selectedOption === 'Resources' "></app-resources>
+        <app-calendar *ngIf="selectedOption === 'Calendar' "></app-calendar>
+    </div>
+  </div>
+</body>
