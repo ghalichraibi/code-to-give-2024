@@ -8,6 +8,12 @@ import { AppMaterialModule } from '@app/modules/material.module';
 import { AppComponent } from '@app/pages/app/app.component';
 import { MainPageComponent } from '@app/pages/main-page/main-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { ResidentPortalComponent } from './pages/resident-portal/resident-portal.component';
+import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ObjectivesComponent } from './components/objectives/objectives.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ResourcesComponent } from './components/resources/resources.component';
 import { CaregiverDashboardComponent } from './pages/caregiver-dashboard/caregiver-dashboard.component';
 
 /**
@@ -17,7 +23,7 @@ import { CaregiverDashboardComponent } from './pages/caregiver-dashboard/caregiv
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent],
+    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent],
     imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],
