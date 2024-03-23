@@ -1,9 +1,15 @@
-body {
+.content-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 5px;
+}
+
+.options-container {
+    display: contents;
+    width: 100%;
 }
 
 .options {
@@ -13,7 +19,7 @@ body {
     background-color: #4CAF50;
     border-radius: 50px;
     overflow: hidden;
-    width: 90%;
+    width: 100%;
 }
 
 .option {
@@ -29,4 +35,8 @@ body {
 
 .option.selected {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.selected-option {
+    width: 100%;
 }
