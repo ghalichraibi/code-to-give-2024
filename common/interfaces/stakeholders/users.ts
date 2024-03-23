@@ -44,7 +44,7 @@ export interface ExternalUser extends BaseUser {
     role: UserRoles.External;
 }
 
-export interface Resident extends BaseEmployee {
+export interface Resident extends BaseUser {
     role: UserRoles.Resident;
     birthDate: Date;
     caregivers: UserId[];
