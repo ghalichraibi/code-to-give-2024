@@ -31,7 +31,7 @@ export interface BaseUser extends BaseAccount {
     accessibleDocuments: DocumentId[];
 }
 
-interface BaseEmployee extends BaseUser {
+export interface BaseEmployee extends BaseUser {
     manager: UserId;
 }
 
@@ -55,7 +55,9 @@ export interface Resident extends BaseUser {
     numberOfChildren: number;
     exitOrientation?: ExitOrientation;
     issues: Issue[];
+    currentLodging: String;
     borough: string;
     monthlyIncome: number;
 }
 
+export type User = Caregiver | Resident | ExternalUser;
