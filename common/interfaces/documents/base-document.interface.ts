@@ -1,5 +1,7 @@
+export type DocumentId = string;
+
 export interface BaseDocument {
-    id: string;
+    id: DocumentId;
     createdAt: Date;
     updatedAt: Date;
 }
