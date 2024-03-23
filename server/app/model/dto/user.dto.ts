@@ -2,7 +2,7 @@ import { UserRoles } from "@common/enums/user-roles.enum";
 import { BaseUser, UserId } from "@common/interfaces/users/base-user.interface";
 
 
-export class UserDto implements BaseUser{
+export class UserDto implements BaseUser {
     role: UserRoles;
     uid: UserId;
     firstName: string;
