@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: MainPageComponent },
     { path: 'about', component: AboutPageComponent },
-    { path: 'caregiver-dashboard', component: CaregiverDashboardComponent},
+    { path: 'caregiver', component: CaregiverDashboardComponent},
     { path: 'resident', component: ResidentPortalComponent},
     { path: '**', redirectTo: '/home' },
 ];
