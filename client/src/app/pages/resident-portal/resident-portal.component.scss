@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.options {
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: #4CAF50;
+    border-radius: 50px;
+    overflow: hidden;
+    width: 90%;
+}
+
+.option {
+    width: 33%;
+    border: none;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.option.selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}

@@ -10,7 +10,8 @@
         <div class="login">
             <div class="options">
                 <button class="option" [ngClass]="{'selected': selectedOption === 'caregiver'}" (click)="selectedOption = 'caregiver'">Caregiver</button>
-                <button class="option" [ngClass]="{'selected': selectedOption === 'resident'}" (click)="selectedOption = 'resident'">Resident</button>
+                <button [routerLink]="['/resident-portal']" class="option" [ngClass]="{'selected': selectedOption === 'resident'}" (click)="selectedOption = 'resident'">Resident</button>
+                <!-- TODO: remove the path directly to residetn-portal -->
                 <button class="option" [ngClass]="{'selected': selectedOption === 'admin'}" (click)="selectedOption = 'admin'">Admin</button>
             </div>
 

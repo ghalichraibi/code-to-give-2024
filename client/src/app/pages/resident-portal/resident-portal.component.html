@@ -1,0 +1,9 @@
+<body>
+    <div class = options>
+        <button *ngFor="let option of options" class="option" [ngClass]="{'selected': selectedOption === option}" (click)="selectOption(option)">{{option}}</button>
+    </div>
+    <div class = "selected-option">
+        <app-personal-information *ngIf="selectedOption === 'Personal Information' "></app-personal-information>
+        <app-calendar *ngIf="selectedOption === 'Calendar' "></app-calendar>
+    </div>
+</body>
