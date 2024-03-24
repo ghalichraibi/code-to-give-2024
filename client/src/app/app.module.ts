@@ -19,6 +19,8 @@ import { ResidentsComponent } from './components/residents/residents.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 /**
  * Main module that is used in main.ts.
@@ -27,8 +29,8 @@ import { ChatComponent } from './components/chat/chat.component';
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent, ResidentsComponent, StatisticsComponent, AuditTrailComponent, ChatComponent],
-    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule],
+    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent, ResidentsComponent, StatisticsComponent, AuditTrailComponent, ChatComponent, DynamicFormComponent],
+    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
 })
