@@ -43,7 +43,7 @@ const squarepant: Resident = {
     isVeteran: false,
     numberOfChildren: 0,
     exitOrientation: ExitOrientation.Death,
-    issues: [],
+    issues: [Issue.Health],
     currentLodging: "Maison B",
     borough: 'bikini bottom',
     monthlyIncome: -6900,

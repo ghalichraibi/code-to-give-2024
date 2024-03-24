@@ -2,6 +2,8 @@ import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
 import { MongoClient } from "mongodb";
 import { InterventionPlan } from "@common/interfaces/documents/intervention-plan.interface";
 import { PLANS } from "./plans.stubs"
+import { Objective } from "@common/interfaces/documents/objective.interface";
+import { TypeValidator } from "../validator.service";
 
 @Injectable()
 export class PlansService implements OnModuleInit {
@@ -23,6 +25,7 @@ export class PlansService implements OnModuleInit {
     async onModuleInit(): Promise<void> {
         try {
             await this.connectToDb();
+            // await this.deleteAllPlans(); 
             const plans = await this.plansCollection.find().toArray();
             if (plans.length === 0) {
                 await this.populateDB();
@@ -65,6 +68,9 @@ export class PlansService implements OnModuleInit {
 
     async createPlan(plan: InterventionPlan): Promise<InterventionPlan> {
         try {
+            if (!TypeValidator.isValidInterventionPlan(plan)) {
+                return Promise.reject('Invalid plan');
+            }
             const newPlan = await this.plansCollection.insertOne(plan);
             return Promise.resolve(newPlan);
         } catch (error) {

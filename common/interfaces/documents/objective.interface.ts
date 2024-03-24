@@ -9,5 +9,5 @@ export interface Objective {
     term: Term;
     status: Status;
     means?: string;
-    healthFactor: HealthFactor;
+    healthFactor: HealthFactor[];
 }

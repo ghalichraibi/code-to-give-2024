@@ -24,6 +24,7 @@ export class UserService implements OnModuleInit {
     async onModuleInit(): Promise<void> {
         try {
             await this.connectToDb();
+            // await this.deleteAllUsers();
             const users = await this.usersCollection.find().toArray();
             if (users.length === 0) {
                 await this.populateDB();
@@ -35,7 +36,6 @@ export class UserService implements OnModuleInit {
 
 
     async populateDB(): Promise<void> {
-       
         await this.usersCollection.insertMany(USERS);
     }
 
@@ -78,7 +78,6 @@ export class UserService implements OnModuleInit {
     async updateUser(id: string, user: User): Promise<void> {
         try {
             await this.usersCollection.updateOne({ id }, { $set: user });
-
         } catch (error) {
             return Promise.reject(`Failed to update user: ${error}`);
         }
