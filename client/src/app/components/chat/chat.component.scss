@@ -12,6 +12,9 @@
     background-color: #fff;
     color: #a8b7ee;
     user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 15px;
     text-align: center;
     font-size: 1.5rem;
@@ -108,4 +111,14 @@
         background-color: #778899;
         color: #708090;
     }
+}
+
+.close-chat {
+    background-color: #f8c0cb;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, Input, ElementRef, OnInit, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
 import { UserRoles } from '../../../../../common/enums/user-roles.enum';
 
 @Component({
@@ -8,6 +8,8 @@ import { UserRoles } from '../../../../../common/enums/user-roles.enum';
 })
 export class ChatComponent implements AfterViewInit, OnInit {
     @Input() resident: any;
+    @Output() closeChat = new EventEmitter<void>();
+
     @ViewChildren('messageList', { read: ElementRef }) messageList: QueryList<ElementRef>;
     roomMessages: string[] = [];
     roomMessage = '';
@@ -17,6 +19,10 @@ export class ChatComponent implements AfterViewInit, OnInit {
     ngOnInit(): void {
         this.receiveMessage();
         this.getAllMessages();
+    }
+
+    onChatClose(): void {
+        this.closeChat.emit();
     }
 
     getAllMessages(): void {
