@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, Input, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { UserRoles } from '../../../../../common/enums/user-roles.enum';
 
 @Component({
     selector: 'app-chat',
@@ -6,10 +7,12 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren }
     styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements AfterViewInit, OnInit {
+    @Input() resident: any;
     @ViewChildren('messageList', { read: ElementRef }) messageList: QueryList<ElementRef>;
     roomMessages: string[] = [];
     roomMessage = '';
     isMessageTooLong: boolean = false;
+    userRole: UserRoles;
 
     ngOnInit(): void {
         this.receiveMessage();
@@ -52,5 +55,9 @@ export class ChatComponent implements AfterViewInit, OnInit {
 
     isSent(message: string): boolean {
         return message.split(' ').includes('You]:');
+    }
+
+    isResident(): boolean {
+        return this.userRole === UserRoles.Resident;
     }
 }
