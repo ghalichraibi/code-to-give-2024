@@ -16,7 +16,6 @@ export class CaregiverDashboardComponent implements OnInit, OnDestroy {
 
   onOpenChat(resident: any) {
     this.selectedResident = resident;
-    console.log('yoyoy');
   }
 
   selectOption(option: string) {

@@ -89,7 +89,7 @@ body::-webkit-scrollbar-thumb:active {
     grid-column: 4;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .content-container {
         grid-column: 1 / span 4;
     }

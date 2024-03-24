@@ -2,8 +2,9 @@
 <div class="list">
     <div *ngFor="let resident of residents" class="resident">
         <div class="resident-info">
-            <div class="name">{{ resident.name }}</div>
-            <div class="age">Age: {{ resident.age }}</div>
+            <div class="name">{{ resident.firstName }} {{ resident.lastName }}</div>
+            <div>Age: {{ getAgeFromBirthDate(resident.birthDate) }}</div>
+            <div>Email: {{ resident.email }}</div>
         </div>
         <div class="actions">
             <button (click)="openChat(resident)">Chat</button>
