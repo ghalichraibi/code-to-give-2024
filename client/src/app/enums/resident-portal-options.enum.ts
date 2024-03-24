@@ -3,5 +3,4 @@ export enum ResidentPortalOptions {
     Objectives = 'Objectives',
     Resources = 'Resources',
     Calendar = 'Calendar',
-    Chat = 'Chat',
 }
