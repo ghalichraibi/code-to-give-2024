@@ -14,6 +14,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { ObjectivesComponent } from './components/objectives/objectives.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ResourcesComponent } from './components/resources/resources.component';
+import { NgFor } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 /**
  * Main module that is used in main.ts.
@@ -23,7 +25,7 @@ import { ResourcesComponent } from './components/resources/resources.component';
  */
 @NgModule({
     declarations: [AppComponent, MainPageComponent, AboutPageComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent],
-    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule],
+    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, NgFor, MatIconModule],
     providers: [],
     bootstrap: [AppComponent],
 })
