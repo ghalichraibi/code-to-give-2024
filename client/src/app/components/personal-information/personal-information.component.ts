@@ -25,5 +25,9 @@ export class PersonalInformationComponent {
       {label: 'Téléphone', value: this.currentResident.phoneNumber},
       {label: 'Adresse', value: this.currentResident.borough}
     ];
+    additionalInformation = [
+      {label: 'Personnes significatives', value: this.currentResident.significantPeople},
+      {label: 'Inervenants du dossier', value: this.currentResident.caregivers}
+    ];
 
 }

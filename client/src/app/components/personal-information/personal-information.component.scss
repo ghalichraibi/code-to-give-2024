@@ -5,13 +5,20 @@
     gap: 20px; 
 }
 
-.separator {
+.component-separator {
     grid-column: 2;
     height: 100%;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.5);
     margin: 0 20px;
 
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
 }
 
 .section {
