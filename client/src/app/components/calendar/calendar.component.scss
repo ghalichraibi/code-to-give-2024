@@ -1,0 +1,73 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    width: 100%;
+}
+
+#week-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightblue;
+    border-radius: 10px;
+    width: -webkit-fill-available;
+    height: 8%;
+    padding: 0;
+}
+
+.week-day {
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    width: 80%;
+}
+
+#month-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: -webkit-fill-available;
+    gap: 3%;
+    user-select: none;
+}
+
+.navigation-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+    user-select: none;
+}
+
+#calendar-grid {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: -webkit-fill-available;
+    height: 85%;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.month-day{
+    margin: 5px;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    padding-left: 10%;
+    padding-top: 5%;
+}
+
+.currentDay {
+    background-color: lightblue;
+}

@@ -1,1 +1,18 @@
-<p>calendar works!</p>
+<div class="container">
+    <div id="month-container">
+        <div class="date">
+            {{ displayMonth }} {{ displayYear }} 
+        </div>
+        <div class="navigation-icons">
+            <span class="material-symbols-outlined navigate-next" (click)="navigatePreviousMonth()">navigate_before</span>
+            <span class="material-symbols-outlined navigate-previous" (click)="navigateNextMonth()">navigate_next</span>
+        </div>
+    </div>
+    <div id="week-container">
+        <div class="week-day" *ngFor="let day of weekdayNames"> {{ day }}</div>
+    </div>
+
+    <div id="calendar-grid">
+        <div class="month-day" *ngFor="let day of numDays" [ngClass]="{'currentDay': day === currentDayIndex}">{{ day }}</div>
+    </div>
+</div>
