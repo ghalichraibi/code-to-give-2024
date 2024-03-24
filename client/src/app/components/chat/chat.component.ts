@@ -1,12 +1,14 @@
-import { AfterViewInit, Component, Input, ElementRef, OnInit, QueryList, ViewChildren, Output, EventEmitter } from '@angular/core';
+import { AfterViewInit, Component, Input, ElementRef, OnInit, QueryList, ViewChildren, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { UserRoles } from '../../../../../common/enums/user-roles.enum';
+import { WebSocketService } from '@app/services/websocket.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent implements AfterViewInit, OnInit {
+export class ChatComponent implements AfterViewInit, OnInit, OnDestroy {
     @Input() resident: any;
     @Output() closeChat = new EventEmitter<void>();
 
@@ -15,20 +17,30 @@ export class ChatComponent implements AfterViewInit, OnInit {
     roomMessage = '';
     isMessageTooLong: boolean = false;
     userRole: UserRoles;
+    message: Subscription;
 
-    ngOnInit(): void {
-        this.receiveMessage();
-        this.getAllMessages();
+    constructor(private readonly webSocketService: WebSocketService) {
+    }
+    
+    ngOnDestroy(): void {
+        if (this.message) {
+            this.message.unsubscribe();
+        }
+    }
+
+    async ngOnInit() {
+        this.message = this.webSocketService.getMessage().subscribe((message: string) => {
+            this.roomMessages.push(message);
+        });
+        await this.joinChat();
     }
 
     onChatClose(): void {
         this.closeChat.emit();
     }
 
-    getAllMessages(): void {
-        // this.chatService.getAllMessages().subscribe((messages: string[]) => {
-        //     this.roomMessages = messages;
-        // });
+    async joinChat() {
+        this.roomMessages = await this.webSocketService.joinChat();
     }
 
     scrollToBottomAfterViewChecked(): void {
@@ -49,14 +61,8 @@ export class ChatComponent implements AfterViewInit, OnInit {
         const currentDate = new Date();
         if (this.roomMessage.trim() === '') return;
         this.roomMessage = `[${currentDate.getHours()}h:${currentDate.getMinutes()}min You]: ${this.roomMessage}`;
-        this.roomMessages.push(this.roomMessage);
+        this.webSocketService.sendMessage(this.roomMessage);
         this.roomMessage = '';
-    }
-
-    receiveMessage(): void {
-        // this.chatService.onMessageReceived((onmessage) => {
-        //     this.roomMessages.push(onmessage);
-        // });
     }
 
     isSent(message: string): boolean {
