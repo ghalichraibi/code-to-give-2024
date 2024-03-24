@@ -12,4 +12,6 @@
             <button (click)="viewDocuments(resident)">View Documents</button>
         </div>
     </div>
+    <div *ngIf="!residents || residents.length === 0" class="no-residents">No residents found</div>
+    <div class="add-new-resident" (click)="createNewResident()"></div>
 </div>

@@ -1,18 +1,25 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CommunicationService } from '@app/services/communication.service';
-import { Resident } from '@common/interfaces/stakeholders/users';
-import { Router } from '@angular/router';
+/* eslint-disable import/no-unresolved */
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { CommunicationService } from "@app/services/communication.service";
+import { Resident } from "@common/interfaces/stakeholders/users";
+import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { CreateResidentDialogComponent } from "../create-resident-dialog/create-resident-dialog.component";
 
 @Component({
-  selector: 'app-residents',
-  templateUrl: './residents.component.html',
-  styleUrls: ['./residents.component.scss']
+  selector: "app-residents",
+  templateUrl: "./residents.component.html",
+  styleUrls: ["./residents.component.scss"],
 })
 export class ResidentsComponent implements OnInit {
   @Output() openChatRequest = new EventEmitter<any>();
   residents: Resident[] = [];
 
-  constructor(private communicationService: CommunicationService, private router: Router) {}
+  constructor(
+    private communicationService: CommunicationService,
+    private router: Router,
+    private matDialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.fetchResidents();
@@ -30,12 +37,12 @@ export class ResidentsComponent implements OnInit {
   }
 
   modifyInfo(resident: any) {
-    console.log('Modifying info of resident:', resident);
+    console.log("Modifying info of resident:", resident);
   }
 
   viewDocuments(resident: any) {
     console.log(resident.id);
-    this.router.navigate(['/resident-documents', resident.id]);
+    this.router.navigate(["/resident-documents", resident.id]);
   }
 
   getAgeFromBirthDate(birthDate: Date) {
@@ -45,5 +52,14 @@ export class ResidentsComponent implements OnInit {
     const m = today.getMonth() - birth.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
     return age;
+  }
+
+  createNewResident() {
+    this.matDialog
+      .open(CreateResidentDialogComponent)
+      .afterClosed()
+      .subscribe(() => {
+        this.fetchResidents();
+      });
   }
 }
