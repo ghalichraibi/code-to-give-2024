@@ -34,7 +34,8 @@ export class ResidentsComponent implements OnInit {
   }
 
   viewDocuments(resident: any) {
-    this.router.navigate(['/resident-documents', resident._id]);
+    console.log(resident.id);
+    this.router.navigate(['/resident-documents', resident.id]);
   }
 
   getAgeFromBirthDate(birthDate: Date) {

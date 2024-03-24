@@ -11,6 +11,7 @@ import { Resident } from '@common/interfaces/stakeholders/users';
 export class ResidentDocumentsComponent implements OnInit {
   residentId: string;
   resident: Resident;
+  documents: string[] =[];
   constructor(private communicationService: CommunicationService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -18,10 +19,12 @@ export class ResidentDocumentsComponent implements OnInit {
     this.communicationService.getUserById(this.residentId).subscribe((response) => {
       if (response.body && response.body.role=='resident') {
         this.resident = response.body;
-      } else {
-        // this.router.navigate(['/caregiver']);
       }
     });
+    this.documents = this.resident.accessibleDocuments;
   }
 
+  openDocument(document: string) {
+    console.log('Opened DOC!');
+  }
 }
