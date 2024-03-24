@@ -6,7 +6,7 @@ import { User } from "@common/interfaces/stakeholders/users";
 
 
 @ApiTags('User')
-@Controller('user')
+@Controller('users')
 export class UserController {
     constructor(private readonly usersService: UserService) {}
 
