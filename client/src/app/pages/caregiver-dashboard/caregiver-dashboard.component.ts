@@ -12,10 +12,12 @@ export class CaregiverDashboardComponent implements OnInit, OnDestroy {
   selectedOption: string = CaregiverDashboardOptions.Residents;
   selectedResident: any;
 
-  constructor() { }
-
   onOpenChat(resident: any) {
     this.selectedResident = resident;
+  }
+
+  closeChat() {
+    this.selectedResident = null;
   }
 
   selectOption(option: string) {
