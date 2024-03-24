@@ -1,9 +1,43 @@
-.buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
+/* formly-field-stepper.component.scss */
 
-.title {
+.stepper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .step {
+    display: none;
+  }
+  
+  .step.active {
+    display: block;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 500;
     margin-bottom: 20px;
-}
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }

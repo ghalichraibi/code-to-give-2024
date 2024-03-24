@@ -1,14 +1,13 @@
-// @use '@angular/material' as mat;
-
-@import 'bootstrap/scss/bootstrap.scss';
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@use '@angular/material' as mat;
 
 html,
 app-root,
 body {
-    height: 100%;
     margin: 0;
     padding: 0;
+}
+
+body {
     font-family: Roboto, 'Helvetica Neue', sans-serif;
     background-color: #f8c0cb;
     background-image: linear-gradient(45deg, #f8c0cb, #add8e6);
