@@ -5,6 +5,7 @@
 }
 
 .content-container {
+    box-shadow: 0 0 5px #f8c0cb, 0 0 2px #f8c0cb;
     grid-column: 1 / span 3;
     display: flex;
     flex-direction: column;
@@ -20,6 +21,7 @@
 }
 
 .options {
+    box-shadow: 0 0 5px #f8c0cb, 0 0 2px #f8c0cb;
     user-select: none;
     display: flex;
     justify-content: space-between;

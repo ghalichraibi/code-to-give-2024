@@ -1,4 +1,5 @@
 .content-container {
+  box-shadow: 0 0 5px #f8c0cb, 0 0 2px #f8c0cb;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +14,7 @@
 }
 
 .options {
+  box-shadow: 0 0 5px #f8c0cb, 0 0 2px #f8c0cb;
   user-select: none;
   display: flex;
   justify-content: space-between;
