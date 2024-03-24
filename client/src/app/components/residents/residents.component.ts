@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommunicationService } from '@app/services/communication.service';
+import { Resident } from '@common/interfaces/stakeholders/users';
 
 @Component({
   selector: 'app-residents',
@@ -8,8 +9,7 @@ import { CommunicationService } from '@app/services/communication.service';
 })
 export class ResidentsComponent implements OnInit {
   @Output() openChatRequest = new EventEmitter<any>();
-
-  residents: any[] = [];
+  residents: Resident[] = [];
 
   constructor(private communicationService: CommunicationService) {}
 
