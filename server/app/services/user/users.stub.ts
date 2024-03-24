@@ -7,10 +7,10 @@ import { ExitOrientation } from "@common/enums/exit-orientation.enum";
 const resident: Resident = {
     id: "2",
     role: UserRoles.Resident,
-    birthDate: new Date(),
+    birthDate: new Date(new Date().setFullYear(new Date().getFullYear() - 30)),
     email: "test@test.com",
-    firstName: "resident",
-    lastName: "resident",
+    firstName: "Jane",
+    lastName: "Doe",
     phoneNumber: "123-456-7890",
     hashedPassword: "$2b$10$1TfwRUWLBWd9lf9pwmKnceT.ZHV0PcnB/k6P6xAI5enWqSWLZ9l/O", // test
     accessibleDocuments: [],
@@ -22,7 +22,7 @@ const resident: Resident = {
     isIndigenous: false,
     isVeteran: false,
     numberOfChildren: 0,
-    currentLodging: "Maison A",
+    currentLodging: "Maison 1",
     caregivers: ["1"],
 };
 
@@ -35,7 +35,7 @@ const squarepant: Resident = {
     accessibleDocuments: [],
     hashedPassword: "$2b$10$1TfwRUWLBWd9lf9pwmKnceT.ZHV0PcnB/k6P6xAI5enWqSWLZ9l/O", // test
     role: UserRoles.Resident,
-    birthDate: new Date(),
+    birthDate: new Date(new Date().setFullYear(new Date().getFullYear() - 27)),
     caregivers: [],
     significantPeople: [],
     immigrationStatus: ImmigrationStatus.NoStatus,

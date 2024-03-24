@@ -22,6 +22,8 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ResidentDocumentsComponent } from './pages/resident-documents/resident-documents.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 /**
  * Main module that is used in main.ts.
@@ -30,8 +32,8 @@ import { ResidentDocumentsComponent } from './pages/resident-documents/resident-
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent, ResidentsComponent, StatisticsComponent, AuditTrailComponent, ChatComponent, ResidentDocumentsComponent],
-    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, NgFor, MatIconModule],
+    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent, ResidentsComponent, StatisticsComponent, AuditTrailComponent, ChatComponent, ResidentDocumentsComponent, AdminPageComponent],
+    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, NgFor, MatIconModule, MatSnackBarModule],
     providers: [],
     bootstrap: [AppComponent],
 })

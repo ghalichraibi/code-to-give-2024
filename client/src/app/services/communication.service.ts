@@ -54,7 +54,7 @@ export class CommunicationService {
         );
     }
 
-    deleteUser(): Observable<HttpResponse<any>> {
+    deleteAllUsers(): Observable<HttpResponse<any>> {
         return this.http.delete(`${this.baseUrl}/users`, { observe: 'response' }).pipe(
             catchError((error) => {
                 return of(error);
@@ -74,8 +74,10 @@ export class CommunicationService {
         return this.http.get<InterventionPlan[]>(`${this.baseUrl}/plans`, { observe: 'response', responseType: 'json' }).pipe(
             map((response: HttpResponse<InterventionPlan[]>) => {
                 return response.body as InterventionPlan[];
-            }
-            ),
+            }),
+            catchError((error) => {
+                return of(error);
+            }),
         );
     }
     
@@ -85,6 +87,9 @@ export class CommunicationService {
             map((response: HttpResponse<InterventionPlan>) => {
                 return response.body as InterventionPlan;
             }),
+            catchError((error) => {
+                return of(error);
+            }),
         );
     }
 
@@ -92,6 +97,9 @@ export class CommunicationService {
         return this.http.post<InterventionPlan>(`${this.baseUrl}/plans`, plan, { observe: 'response', responseType: 'json' }).pipe(
             map((response: HttpResponse<InterventionPlan>) => {
                 return response.body as InterventionPlan;
+            }), 
+            catchError((error) => {
+                return of(error);
             }),
         );
     }
@@ -100,15 +108,25 @@ export class CommunicationService {
         return this.http.patch<InterventionPlan>(`${this.baseUrl}/plans/${id}`, plan, { observe: 'response', responseType: 'json' }).pipe(
             map((response: HttpResponse<InterventionPlan>) => {
                 return response.body as InterventionPlan;
+            }), 
+            catchError((error) => {
+                return of(error);
             }),
         );
     }
 
     deleteAllPlans(): Observable<HttpResponse<string>> {
-        return this.http.delete(`${this.baseUrl}/plans`, { observe: 'response', responseType: 'text' });
+        return this.http.delete(`${this.baseUrl}/plans`, { observe: 'response', responseType: 'text' }).pipe(
+            catchError((error) => {
+                return of(error);
+            }),
+        );
     }
 
     deletePlan(id: string): Observable<HttpResponse<string>> {
-        return this.http.delete(`${this.baseUrl}/plans/${id}`, { observe: 'response', responseType: 'text' });
+        return this.http.delete(`${this.baseUrl}/plans/${id}`, { observe: 'response', responseType: 'text' }).pipe(catchError((error) => {
+                return of(error);
+            }),
+        );
     }
 }
