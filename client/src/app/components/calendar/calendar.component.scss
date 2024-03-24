@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 10px;
+    gap: 5px;
     height: 100%;
     width: 100%;
 }
@@ -14,7 +14,7 @@
     align-items: center;
     background-color: lightblue;
     border-radius: 10px;
-    width: 85%;
+    width: -webkit-fill-available;
     height: 8%;
     padding: 0;
 }
@@ -32,18 +32,9 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 100%;
+    width: -webkit-fill-available;
     gap: 3%;
     user-select: none;
-}
-
-.date {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10%;
-    width: 5%;
 }
 
 .navigation-icons {
@@ -57,7 +48,7 @@
 #calendar-grid {
     border: 1px solid black;
     border-radius: 10px;
-    width: 85%;
+    width: -webkit-fill-available;
     height: 85%;
     padding: 2%;
     display: grid;
@@ -67,17 +58,14 @@
 }
 
 .month-day{
+    margin: 5px;
     display: flex;
     border: 1px solid black;
     border-radius: 10px;
-    width: 80%;
-    height: 80%;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
     padding-left: 10%;
     padding-top: 5%;
-}
-
-ul {
-    list-style-type: none;
 }
 
 .currentDay {
