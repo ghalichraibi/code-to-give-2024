@@ -11,19 +11,21 @@
     <div class = "component-separator"></div>
     <div class="column">
         <div class="section">
-            <h2>Informations complémentaires</h2>
-            <div *ngFor="let item of additionalInformation" class="item">
-                <span class="label">{{item.label}}: </span>
-                <span class="value">{{item.value}}</span>
-            </div>
-        </div>
-        <div class = "separator"></div>
-        <div class="section">
             <h2>Coordonnées</h2>
             <div *ngFor="let item of contactDetails" class="item">
                 <span class="label">{{item.label}}: </span>
                 <span class="value">{{item.value}}</span>
             </div>
         </div>
+        <div class = "separator"></div>
+        <div class="section">
+            <h2>Personnes significatives</h2>
+            <div *ngFor="let person of currentResident.significantPeople" class="item">
+                <p>{{person.name}}</p>
+                <p>{{person.relationType}}</p>
+                <p>{{person.phoneNumber}}</p>
+            </div>
+        </div>
     </div>
+
 </div>
