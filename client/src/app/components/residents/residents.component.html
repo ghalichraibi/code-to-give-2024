@@ -1,1 +1,14 @@
-<p>residents works!</p>
+<h2>Residents</h2>
+<div class="list">
+    <div *ngFor="let resident of residents" class="resident">
+        <div class="resident-info">
+            <div class="name">{{ resident.name }}</div>
+            <div class="age">Age: {{ resident.age }}</div>
+        </div>
+        <div class="actions">
+            <button (click)="openChat(resident)">Chat</button>
+            <button (click)="modifyInfo(resident)">Modify Info</button>
+            <button (click)="viewDocuments(resident)">View Documents</button>
+        </div>
+    </div>
+</div>
