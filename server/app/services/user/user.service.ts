@@ -1,12 +1,8 @@
 import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
-import * as fs from 'fs-extra';
-import { UserRoles } from "@common/enums/user-roles.enum";
-import { Resident, User, BaseUser, Caregiver, ExternalUser } from "@common/interfaces/stakeholders/users";
+import { Resident, User} from "@common/interfaces/stakeholders/users";
 import { MongoClient } from "mongodb";
-import { Issue } from "@common/enums/issue.enum";
-import { ImmigrationStatus } from "@common/enums/immigration-status.enum";
+import { USERS } from "./users.stub";
+import { UserRoles } from "@common/enums/user-roles.enum";
 
 @Injectable()
 export class UserService implements OnModuleInit {
@@ -28,6 +24,7 @@ export class UserService implements OnModuleInit {
     async onModuleInit(): Promise<void> {
         try {
             await this.connectToDb();
+            // await this.deleteAllUsers();
             const users = await this.usersCollection.find().toArray();
             if (users.length === 0) {
                 await this.populateDB();
@@ -39,57 +36,7 @@ export class UserService implements OnModuleInit {
 
 
     async populateDB(): Promise<void> {
-        const resident: Resident = {
-            uid: "2",
-            role: UserRoles.Resident,
-            birthDate: new Date(),
-            email: "test@test.com",
-            firstName: "resident",
-            lastName: "resident",
-            phoneNumber: "123-456-7890",
-            hashedPassword: "$2b$10$1TfwRUWLBWd9lf9pwmKnceT.ZHV0PcnB/k6P6xAI5enWqSWLZ9l/O", // test
-            accessibleDocuments: [],
-            significantPeople: [],
-            monthlyIncome: 1000,
-            borough: "Cote-des-Neiges",
-            issues: [Issue.Homelessness],
-            immigrationStatus: ImmigrationStatus.Citizen,
-            isIndigenous: false,
-            isVeteran: false,
-            numberOfChildren: 0,
-            currentLodging: "Maison A",
-            caregivers: ["1"],
-        }
-        
-        const caregiver: Caregiver = {
-            uid: "1",
-            role: UserRoles.Caregiver,
-            email: "test@test.com",
-            firstName: "caregiver",
-            lastName: "caregiver",
-            phoneNumber: "123-456-7890",
-            hashedPassword: "$2b$10$1TfwRUWLBWd9lf9pwmKnceT.ZHV0PcnB/k6P6xAI5enWqSWLZ9l/O", // test
-            residents: ["2"],
-            accessibleDocuments: [],
-            manager: "0",
-        }
-
-        const admin: BaseUser = {
-            uid: "0",
-            role: UserRoles.Admin,
-            email: "test@test.com",
-            firstName: "admin",
-            lastName: "admin",
-            phoneNumber: "123-456-7890",
-            hashedPassword: "$2b$10$1TfwRUWLBWd9lf9pwmKnceT.ZHV0PcnB/k6P6xAI5enWqSWLZ9l/O", // test
-            accessibleDocuments: [],
-        }
-        const users: Array<any> = [
-            resident,
-            caregiver,
-            admin
-        ]
-        await this.usersCollection.insertMany(users);
+        await this.usersCollection.insertMany(USERS);
     }
 
 
@@ -111,9 +58,9 @@ export class UserService implements OnModuleInit {
         }
     }
 
-    async getUserById(uid: string): Promise<User> {
+    async getUserById(id: string): Promise<User> {
         try {
-            const user = await this.usersCollection.findOne({ uid: uid });
+            const user = await this.usersCollection.findOne({ id });
             return Promise.resolve(user);
         } catch (error) {
             return Promise.reject(`Failed to get user: ${error}`);
@@ -128,18 +75,17 @@ export class UserService implements OnModuleInit {
         }
     }
 
-    async updateUser(uid: string, user: User): Promise<void> {
+    async updateUser(id: string, user: User): Promise<void> {
         try {
-            await this.usersCollection.updateOne({ uid: uid }, { $set: user });
-
+            await this.usersCollection.updateOne({ id }, { $set: user });
         } catch (error) {
             return Promise.reject(`Failed to update user: ${error}`);
         }
     }
 
-    async deleteUser(uid: string): Promise<void> {
+    async deleteUser(id: string): Promise<void> {
         try {
-            await this.usersCollection.deleteOne({ uid: uid });
+            await this.usersCollection.deleteOne({ id });
         } catch (error) {
             return Promise.reject(`Failed to delete user: ${error}`);
         }
