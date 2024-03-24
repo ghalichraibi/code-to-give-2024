@@ -23,7 +23,7 @@ interface BaseAccount {
 
 // A user is a person that has an account in the system
 export interface BaseUser extends BaseAccount {
-    uid: UserId;
+    id: UserId;
     firstName: string;
     lastName: string;
     role: UserRoles;
