@@ -4,6 +4,7 @@ import { InterventionPlan } from "@common/interfaces/documents/intervention-plan
 import { PLANS } from "./plans.stubs"
 import { Objective } from "@common/interfaces/documents/objective.interface";
 import { TypeValidator } from "../validator.service";
+import { vs as uuid} from 'uuid';
 
 @Injectable()
 export class PlansService implements OnModuleInit {
@@ -25,7 +26,7 @@ export class PlansService implements OnModuleInit {
     async onModuleInit(): Promise<void> {
         try {
             await this.connectToDb();
-            // await this.deleteAllPlans(); 
+            // await this.deleteAllPlans();
             const plans = await this.plansCollection.find().toArray();
             if (plans.length === 0) {
                 await this.populateDB();
@@ -68,7 +69,9 @@ export class PlansService implements OnModuleInit {
 
     async createPlan(plan: InterventionPlan): Promise<InterventionPlan> {
         try {
+            plan.id = uuid(20);
             if (!TypeValidator.isValidInterventionPlan(plan)) {
+                this.logger.error('Invalid plan');
                 return Promise.reject('Invalid plan');
             }
             const newPlan = await this.plansCollection.insertOne(plan);

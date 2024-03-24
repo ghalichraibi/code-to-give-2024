@@ -4,8 +4,8 @@ import { Response } from 'express';
 import { PlansService } from '@app/services/document/plans.service';
 
 
-@ApiTags('plan')
-@Controller('plan')
+@ApiTags('Plan')
+@Controller('plans')
 export class PlansController {
     constructor(private readonly plansService: PlansService) {}
 
@@ -35,7 +35,7 @@ export class PlansController {
             const newPlan = await this.plansService.createPlan(plan);
             return response.status(HttpStatus.CREATED).json(newPlan);
         } catch (error) {
-            return response.status(HttpStatus.NOT_FOUND).json({ message: error.message });
+            return response.status(HttpStatus.BAD_REQUEST).json({ message: error.message });
         }
     }
 

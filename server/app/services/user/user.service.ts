@@ -3,6 +3,7 @@ import { Resident, User} from "@common/interfaces/stakeholders/users";
 import { MongoClient } from "mongodb";
 import { USERS } from "./users.stub";
 import { UserRoles } from "@common/enums/user-roles.enum";
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class UserService implements OnModuleInit {
@@ -69,6 +70,7 @@ export class UserService implements OnModuleInit {
 
     async createUser(user: User): Promise<void>{
         try {
+            user.id = uuid(20);
             await this.usersCollection.insertOne(user);
         } catch (error) {
             return Promise.reject(`Failed to add user: ${error}`);
