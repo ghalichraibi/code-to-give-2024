@@ -111,9 +111,4 @@ export class CommunicationService {
     deletePlan(id: string): Observable<HttpResponse<string>> {
         return this.http.delete(`${this.baseUrl}/plans/${id}`, { observe: 'response', responseType: 'text' });
     }
-
-     
-
-
-
 }
