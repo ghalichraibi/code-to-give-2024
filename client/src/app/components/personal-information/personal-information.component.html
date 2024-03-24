@@ -1,1 +1,8 @@
-<p>personal-information works!</p>
+<div>
+    <h2>Profile</h2>
+    <div class="row">
+        <div *ngFor="let item of displayedInformation" >
+            <b>{{item.label}}</b>: {{item.value}}
+        </div>
+    </div>
+</div>
