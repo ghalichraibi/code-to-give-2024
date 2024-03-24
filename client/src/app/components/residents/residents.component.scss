@@ -1,0 +1,53 @@
+h2 {
+    user-select: none;
+    margin-block-start: 0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resident {
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resident-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.actions button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: 15px 20px;
+    font-size: 2vmin;
+    width: 175px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s;
+    &:hover {
+        transform: translateY(-2px);
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+}

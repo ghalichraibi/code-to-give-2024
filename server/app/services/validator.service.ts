@@ -22,14 +22,13 @@ export class TypeValidator {
     }
 
     static isValidInterventionPlan(object: any): object is InterventionPlan {
-        return 'id' in object &&
-               'createdAt' in object && object.createdAt instanceof Date &&
-               'updatedAt' in object && object.updatedAt instanceof Date &&
+        return 'createdAt' in object && typeof object.createdAt === 'string' &&
+               'updatedAt' in object && typeof object.updatedAt === 'string' &&
                'resident' in object &&
-               'isFirstVisit' in object && typeof object.isFirstVisit === 'boolean' &&
-               'planStart' in object && object.planStart instanceof Date &&
-               'startOfStay' in object && object.startOfStay instanceof Date &&
-               'endOfStay' in object && object.endOfStay instanceof Date &&
+               'isFirstVisit' in object && typeof object.isFirstVisit === 'boolean'&&
+               'planStart' in object && typeof object.planStart === 'string' &&
+               'startOfStay' in object && typeof object.startOfStay === 'string' &&
+               'endOfStay' in object && typeof object.endOfStay === 'string' &&
                'caregivers' in object && Array.isArray(object.caregivers) &&
                'treatmentTeam' in object && Array.isArray(object.treatmentTeam) &&
                'objectives' in object && object.objectives.every((objective: any) => TypeValidator.isValidObjctive(objective));

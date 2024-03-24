@@ -10,6 +10,13 @@ export class CaregiverDashboardComponent implements OnInit, OnDestroy {
   caregiver: String;
   options : string[] = Object.keys(CaregiverDashboardOptions).map(key => CaregiverDashboardOptions[key as keyof typeof CaregiverDashboardOptions]);
   selectedOption: string = CaregiverDashboardOptions.Residents;
+  selectedResident: any;
+
+  constructor() { }
+
+  onOpenChat(resident: any) {
+    this.selectedResident = resident;
+  }
 
   selectOption(option: string) {
       this.selectedOption = option;

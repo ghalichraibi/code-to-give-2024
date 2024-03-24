@@ -1,19 +1,20 @@
 <body>
     <app-header></app-header>
+    <div class="content-wrapper">
+        <div class="content-container">
+            <div class="options-container">
+                <div class = options>
+                    <button *ngFor="let option of options" class="option" [ngClass]="{'selected': selectedOption === option}" (click)="selectOption(option)">{{option}}</button>
+                </div>
+            </div>
 
-    <div class="content-container">
-        <div class="options-container">
-            <div class = options>
-                <button *ngFor="let option of options" class="option" [ngClass]="{'selected': selectedOption === option}" (click)="selectOption(option)">{{option}}</button>
+            <div class = "selected-option">
+                <app-personal-information *ngIf="selectedOption === 'Personal Information' "></app-personal-information>
+                <app-objectives *ngIf="selectedOption === 'Objectives' "></app-objectives>
+                <app-resources *ngIf="selectedOption === 'Resources' "></app-resources>
+                <app-calendar *ngIf="selectedOption === 'Calendar' "></app-calendar>
             </div>
         </div>
-
-        <div class = "selected-option">
-            <app-personal-information *ngIf="selectedOption === 'Personal Information' "></app-personal-information>
-            <app-objectives *ngIf="selectedOption === 'Objectives' "></app-objectives>
-            <app-resources *ngIf="selectedOption === 'Resources' "></app-resources>
-            <app-calendar *ngIf="selectedOption === 'Calendar' "></app-calendar>
-            <app-chat *ngIf="selectedOption === 'Chat' "></app-chat>
-        </div>
+        <app-chat class="chat-box"></app-chat>
     </div>
 </body>
