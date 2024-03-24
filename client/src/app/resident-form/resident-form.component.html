@@ -1,0 +1,76 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>First Name</label>
+    <input type="text">
+    <br>
+    <label>Last Name</label>
+    <input type="text">
+    <br>
+    <label>Phone Number</label>
+    <input type="text">
+    <br>
+    <label>Email</label>
+    <input type="email">
+    <br>
+    <label>Birth Date</label>
+    <input type="date">
+    <br>
+    <label>Add Significant Person</label>
+    <button type="button">Add</button>
+    <br>
+    <div *ngIf="significantPersons.length != 0">
+        <label>Significant Persons</label>
+        <div *ngFor="let person of significantPersons">
+            <p>{{ person.name }} <button type="button">Remove</button></p>
+            
+        </div>
+    </div>
+    <label>Immigration Status</label>
+    <select> <!--only a single option can be selected-->
+        <option value="citizen">Citizen</option>
+        <option value="permanent-resident">Permanent Resident</option>
+        <option value="temporary-resident">Temporary Resident</option>
+        <option value="asylum-accepted">Asylum Accepted</option>
+        <option value="asylum-pending">Asylum Pending</option>
+        <option value="no-status">No Status</option>
+    </select>
+    <br>
+    <label>Other</label>
+    <br>
+    <input type="checkbox" value="indigenous">
+    <label>Indigenous</label>
+    <br>
+    <input type="checkbox" value="veteran">
+    <label>Veteran</label>
+    <br>
+    <label>Number of children</label>
+    <input type="number">
+    <br>
+    <label>Issues</label>
+    <br>
+    <input type="checkbox" value="health">
+    <label>Health</label>
+    <input type="checkbox" value="mental-health">
+    <label>Mental Health</label>
+    <input type="checkbox" value="addiction">
+    <label>Addiction</label>
+    <input type="checkbox" value="violence">
+    <label>Violence</label>
+    <input type="checkbox" value="homelessness">
+    <label>Homelessness</label>
+    <input type="checkbox" value="poverty">
+    <label>Poverty</label>
+    <input type="checkbox" value="discrimination">
+    <label>Discrimination</label>
+    <input type="checkbox" value="unemployment">
+    <label>Unemployment</label>
+    <input type="checkbox" value="other">
+    <label>Other</label>
+    <br>
+    <label>Current Lodging</label>
+    <input type="text">
+    <br>
+    <label>Monthly income (thousands) </label>
+    <input type="number">
+    <br>
+<button type="submit">Submit</button>
+</form>

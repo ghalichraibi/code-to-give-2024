@@ -1,7 +1,0 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div *ngFor="let input of inputData">
-      <label>{{input.label}}</label>
-      <input type="text" [formControlName]="input.label">
-    </div>
-    <button type="submit">Submit</button>
-</form>
