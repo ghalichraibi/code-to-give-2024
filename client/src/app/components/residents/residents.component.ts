@@ -63,9 +63,11 @@ export class ResidentsComponent implements OnInit {
       });
   }
 
-  endOfStay(resident: any) {
+  endOfStay(residentId: string) {
     this.matDialog
-      .open(EndofstaySurveyComponent)
+      .open(EndofstaySurveyComponent, {
+        data: { residentId: residentId }
+      })
       .afterClosed()
       .subscribe(() => {
         this.fetchResidents();
