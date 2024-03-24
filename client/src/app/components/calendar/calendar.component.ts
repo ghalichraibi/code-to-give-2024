@@ -32,13 +32,14 @@ export class CalendarComponent implements OnInit {
     this.displayDate.setMonth(this.displayDate.getMonth() + 1);
     return this.displayMonth = this.monthNames[this.displayDate.getMonth()];
   }
+
   navigatePreviousMonth(){
     if (this.displayDate.getMonth() === 0){
       this.displayYear--;
     }
     this.getNumOfDaysInMonth();
     this.displayDate.setMonth(this.displayDate.getMonth() - 1);
-    return this.displayMonth = this.monthNames[this.displayDate.getMonth() - 1];
+    return this.displayMonth = this.monthNames[this.displayDate.getMonth()];
   }
   
   getNumOfDaysInMonth(){
