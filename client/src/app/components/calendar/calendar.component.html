@@ -9,10 +9,12 @@
         </div>
     </div>
     <div id="week-container">
-        <div class="week-day" *ngFor="let day of weekdayNames"> {{ day }}</div>
+        <div class="week-day" *ngFor="let day of weekdayNames">{{ day }}</div>
     </div>
 
     <div id="calendar-grid">
-        <div class="month-day" *ngFor="let day of numDays" [ngClass]="{'currentDay': day === currentDayIndex}">{{ day }}</div>
+        <div class="month-day" *ngFor="let day of numDays" [ngClass]="{'currentDay': day === currentDayIndex}">
+            {{ day }}
+        </div>
     </div>
 </div>
