@@ -11,12 +11,9 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
     this.getNumOfDaysInMonth();
   }
-
-  monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
-
+  
+  monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   weekdayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
   displayDate = new Date();
 
   displayMonth = this.monthNames[this.displayDate.getMonth()];
