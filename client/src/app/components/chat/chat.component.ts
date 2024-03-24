@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, ElementRef, OnInit, QueryList, ViewChi
 import { UserRoles } from '../../../../../common/enums/user-roles.enum';
 import { WebSocketService } from '@app/services/websocket.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-chat',
@@ -19,10 +20,9 @@ export class ChatComponent implements AfterViewInit, OnInit, OnDestroy {
     userRole: UserRoles;
     message: Subscription;
 
-    constructor(private readonly webSocketService: WebSocketService) {
-    }
-    
-    ngOnDestroy(): void {
+    constructor(private readonly webSocketService: WebSocketService, private router: Router){}
+
+        ngOnDestroy(): void {
         if (this.message) {
             this.message.unsubscribe();
         }
@@ -44,13 +44,13 @@ export class ChatComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     scrollToBottomAfterViewChecked(): void {
-        this.messageList.last.nativeElement.scrollIntoView({ behavior: 'smooth' });
+        // this.messageList.last.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
 
     scrollToBottom(): void {
-        this.messageList.changes.subscribe(() => {
-            this.scrollToBottomAfterViewChecked();
-        });
+        // this.messageList.changes.subscribe(() => {
+        //     this.scrollToBottomAfterViewChecked();
+        // });
     }
 
     ngAfterViewInit(): void {
@@ -70,6 +70,6 @@ export class ChatComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     isResident(): boolean {
-        return this.userRole === UserRoles.Resident;
+        return this.router.url.includes('resident');
     }
 }
