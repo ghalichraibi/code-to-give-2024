@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommunicationService } from '@app/services/communication.service';
 import { Resident } from '@common/interfaces/stakeholders/users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-residents',
@@ -11,7 +12,7 @@ export class ResidentsComponent implements OnInit {
   @Output() openChatRequest = new EventEmitter<any>();
   residents: Resident[] = [];
 
-  constructor(private communicationService: CommunicationService) {}
+  constructor(private communicationService: CommunicationService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchResidents();
@@ -33,10 +34,10 @@ export class ResidentsComponent implements OnInit {
   }
 
   viewDocuments(resident: any) {
-    console.log('Viewing documents of resident:', resident);
+    this.router.navigate(['/resident-documents', resident._id]);
   }
 
-  getAgeFromBirthDate(birthDate: string) {
+  getAgeFromBirthDate(birthDate: Date) {
     const today = new Date();
     const birth = new Date(birthDate);
     let age = today.getFullYear() - birth.getFullYear();
