@@ -1,6 +1,6 @@
 export enum ResidentPortalOptions {
     PersonalInformation = 'Personal Information',
-    Objectives = 'Objectives',
+    Timeline = 'Timeline',
     Resources = 'Resources',
     Calendar = 'Calendar',
 }

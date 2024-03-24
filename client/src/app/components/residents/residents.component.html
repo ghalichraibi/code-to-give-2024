@@ -9,7 +9,8 @@
         <div class="actions">
             <button (click)="openChat(resident)">Chat</button>
             <button (click)="modifyInfo(resident)">Modify Info</button>
-            <button (click)="viewDocuments(resident)">View Documents</button>
+            <button (click)="viewDocuments(resident.id)">View Documents</button>
+            <button (click)="endOfStay(resident)">End-Of-Stay</button>
         </div>
     </div>
     <div *ngIf="!residents || residents.length === 0" class="no-residents">No residents found</div>
