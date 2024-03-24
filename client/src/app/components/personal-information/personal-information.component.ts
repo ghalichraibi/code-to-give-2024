@@ -20,5 +20,10 @@ export class PersonalInformationComponent {
       { label: 'Enjeux', value: this.currentResident.issues },
       { label: 'Revenu mensuel', value: this.currentResident.monthlyIncome }
     ];
+    contactDetails = [
+      {label: 'Courriel', value: this.currentResident.email},
+      {label: 'Téléphone', value: this.currentResident.phoneNumber},
+      {label: 'Adresse', value: this.currentResident.borough}
+    ];
 
 }

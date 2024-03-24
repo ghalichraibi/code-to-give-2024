@@ -1,0 +1,35 @@
+.profile-information-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px; 
+}
+
+.separator {
+    grid-column: 2;
+    height: 100%;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0 20px;
+
+}
+
+.section {
+    text-align: center;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.label {
+    font-weight: bold;
+    text-align: left;
+}
+
+.value {
+    text-align: right;
+}
