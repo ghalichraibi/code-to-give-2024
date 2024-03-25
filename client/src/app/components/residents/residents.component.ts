@@ -41,6 +41,10 @@ export class ResidentsComponent implements OnInit {
     console.log("Modifying info of resident:", resident);
   }
 
+  managePlans(residentId: string) {
+    this.router.navigate(["/intervention-plan", residentId]);
+  }
+
   viewDocuments(residentId: string) {
     this.router.navigate(["/resident-documents", residentId]);
   }
