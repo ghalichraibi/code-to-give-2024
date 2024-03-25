@@ -31,16 +31,12 @@ export class ModifyResidentPageComponent {
         const residentFormBuilder = new ResidentFormBuilder(
           this.communicationService
         );
-        // Build your form structure first
         this.fields = [
           {
             type: "stepper",
             fieldGroup: await residentFormBuilder.buildForm(),
           },
         ];
-
-        // After building the form, set the model to fill the form fields
-        // You might need to adapt this part if the structure of Resident is different from the form
         this.model = { ...this.resident };
       }
     });
