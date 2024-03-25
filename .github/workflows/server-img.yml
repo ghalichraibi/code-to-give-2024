@@ -3,8 +3,14 @@ name: Server Image CI
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'common/**'
+      - 'server/**'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'common/**'
+      - 'server/**'
 
 jobs:
 
