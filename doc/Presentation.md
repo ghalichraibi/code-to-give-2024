@@ -16,6 +16,8 @@ Furthermore, because this is website is called StepByStep after all, as you can 
 
 **Close the website** **Back to presentation** Now personally, I think we did one hell of a job considering the limited time frame and limited uber eats budget but my teamates insited we bring up some quick points that we could still improve on, given more time. **Read from canva presentation**.
 
+I'd like to quickly talk about the tech stack we used to accomplish StepByStep: So what we did is leverage Angular for the front-end, NestJS for the dynamic server, MongoDB for data storage and retrieval and Socket.IO for real-time communication all the while following all the proper version control etiquette via git and github as a platform. 
+
 StepByStep isn't just a tool—it's a testament to our commitment to innovation and continuous improvement in Le chainon's mission to support women in difficulty. Together with Le Chainon Foundation, we invite you to join us on this journey towards empowerment, autonomy, and social change.
 
 ***Thank yous*** I would like to thank, on behalf of me and my amazing team, Le Chainon for tasking us with such an honorable challenge, Morgan Stanely for giving us the perfect platform to show what us, young devs can do, and of course, our two mentors William and Denis for being with us through every step of the road (pun intended again), thanks for having me!
