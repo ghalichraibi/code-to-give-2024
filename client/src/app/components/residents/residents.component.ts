@@ -38,7 +38,8 @@ export class ResidentsComponent implements OnInit {
   }
 
   modifyInfo(resident: any) {
-    console.log("Modifying info of resident:", resident);
+    console.log("Modifying info of resident:", resident.id);
+    this.router.navigate(["/modify-resident", resident.id])
   }
 
   managePlans(residentId: string) {

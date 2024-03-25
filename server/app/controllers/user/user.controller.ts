@@ -81,6 +81,8 @@ export class UserController {
     @Res() response: Response
   ) {
     try {
+      delete data._id;
+      delete data.id;
       const user = await this.usersService.updateUser(id, data as User);
       response.status(HttpStatus.OK).json(user);
     } catch (error) {

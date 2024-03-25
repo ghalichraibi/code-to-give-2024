@@ -32,6 +32,7 @@ import { FormlyFieldStepperComponent } from "./components/formly-field-stepper/f
 import { EndofstaySurveyComponent } from './components/endofstay-survey/endofstay-survey.component';
 import { CreatePlanDialogComponent } from './components/create-plan-dialog/create-plan-dialog.component';
 import { InterventionPlanComponent } from './pages/intervention-plan/intervention-plan.component';
+import { ModifyResidentPageComponent } from "./pages/modify-resident-page/modify-resident-page.component";
 
 /**
  * Main module that is used in main.ts.
@@ -62,6 +63,7 @@ import { InterventionPlanComponent } from './pages/intervention-plan/interventio
     EndofstaySurveyComponent,
     CreatePlanDialogComponent,
     InterventionPlanComponent,
+    ModifyResidentPageComponent,
   ],
   imports: [
     AppMaterialModule,
