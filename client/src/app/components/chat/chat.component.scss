@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 15px;
     text-align: center;
     font-size: 1.5rem;
@@ -114,11 +115,14 @@
 }
 
 .close-chat {
-    background-color: #f8c0cb;
+    background-color: #f57992;
     color: #fff;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

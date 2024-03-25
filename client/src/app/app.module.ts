@@ -29,6 +29,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { FormlyModule } from "@ngx-formly/core";
 import { FormlyBootstrapModule } from "@ngx-formly/bootstrap";
 import { FormlyFieldStepperComponent } from "./components/formly-field-stepper/formly-field-stepper.component";
+import { EndofstaySurveyComponent } from './components/endofstay-survey/endofstay-survey.component';
 
 /**
  * Main module that is used in main.ts.
@@ -56,6 +57,7 @@ import { FormlyFieldStepperComponent } from "./components/formly-field-stepper/f
     AdminPageComponent,
     CreateResidentDialogComponent,
     FormlyFieldStepperComponent,
+    EndofstaySurveyComponent,
   ],
   imports: [
     AppMaterialModule,

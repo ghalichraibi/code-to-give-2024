@@ -27,7 +27,7 @@ body {
 h2 {
     color: #333;
     margin-bottom: 40px;
-    font-size: 28px; /* Increased font size */
+    font-size: 28px;
 }
 
 .btn {
@@ -36,8 +36,8 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    padding: 20px 40px; /* Increased padding */
-    font-size: 18px; /* Increased font size */
+    padding: 20px 40px;
+    font-size: 18px;
     text-transform: uppercase;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -58,5 +58,5 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Increased gap */
+    gap: 20px;
 }

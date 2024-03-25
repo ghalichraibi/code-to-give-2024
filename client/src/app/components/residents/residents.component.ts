@@ -5,6 +5,7 @@ import { Resident } from "@common/interfaces/stakeholders/users";
 import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { CreateResidentDialogComponent } from "../create-resident-dialog/create-resident-dialog.component";
+import { EndofstaySurveyComponent } from "@app/components/endofstay-survey/endofstay-survey.component";
 
 @Component({
   selector: "app-residents",
@@ -40,9 +41,8 @@ export class ResidentsComponent implements OnInit {
     console.log("Modifying info of resident:", resident);
   }
 
-  viewDocuments(resident: any) {
-    console.log(resident.id);
-    this.router.navigate(["/resident-documents", resident.id]);
+  viewDocuments(residentId: string) {
+    this.router.navigate(["/resident-documents", residentId]);
   }
 
   getAgeFromBirthDate(birthDate: Date) {
@@ -57,6 +57,17 @@ export class ResidentsComponent implements OnInit {
   createNewResident() {
     this.matDialog
       .open(CreateResidentDialogComponent)
+      .afterClosed()
+      .subscribe(() => {
+        this.fetchResidents();
+      });
+  }
+
+  endOfStay(residentId: string) {
+    this.matDialog
+      .open(EndofstaySurveyComponent, {
+        data: { residentId: residentId }
+      })
       .afterClosed()
       .subscribe(() => {
         this.fetchResidents();
