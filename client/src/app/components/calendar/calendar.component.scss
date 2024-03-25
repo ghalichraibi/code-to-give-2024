@@ -1,3 +1,5 @@
+// good luck omar
+
 .calendar-container {
     .calendar-controls {
       display: flex;
@@ -15,14 +17,14 @@
       }
   
       .day {
-        height: 65px; /* Adjusted for potential event listing */
+        height: 65px; 
         border: 1px solid #ccc;
         display: flex;
         flex-direction: column;
         align-items: center;
         background-color: #f9f9f9;
         padding: 5px;
-        overflow: auto; /* Allows scrolling within a day if many events */
+        overflow: auto; 
         
         &.today {
           background-color: lightblue;

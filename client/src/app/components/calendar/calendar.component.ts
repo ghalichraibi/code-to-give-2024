@@ -4,7 +4,6 @@ interface CalendarEvent {
   id: string;
   title: string;
   date: Date;
-  description?: string;
 }
 
 interface Day {
@@ -25,12 +24,16 @@ export class CalendarComponent implements OnInit {
   days: Day[] = [];
 
   events: CalendarEvent[] = [
-    { id: '1', title: '[Zoom] Meeting with Omar', date: new Date(2024, 2, 12), description: 'Description of Event 1' },
-    { id: '1', title: '[Zoom] Meeting with Ghali', date: new Date(2024, 2, 26), description: 'Description of Event 2' },
-    { id: '1', title: '[Zoom] Meeting with Bob', date: new Date(2024, 2, 17), description: 'Description of Event 3' },
-
-    // Add more mock events as needed
+    { id: '1', title: '[Zoom] Meeting with Omar', date: new Date(2024, 2, 12) },
+    { id: '2', title: '[Zoom] Meeting with Ghali', date: new Date(2024, 2, 26)},
+    { id: '3', title: '[Zoom] Meeting with Bob', date: new Date(2024, 2, 17) },
   ];
+
+  newEvent: CalendarEvent = {
+    id: '',
+    title: '',
+    date: new Date(),
+  };
 
   ngOnInit(): void {
     this.generateCalendar();
@@ -43,7 +46,7 @@ export class CalendarComponent implements OnInit {
     const daysInMonth = lastDay.getDate();
     const dayOfWeek = firstDay.getDay();
 
-    // Adjust for Sunday start
+    // Commencer dimanche
     for (let i = 0; i < dayOfWeek; i++) {
       this.days.push({ date: new Date(firstDay.getFullYear(), firstDay.getMonth(), -i), dayOfMonth: -1, isCurrentMonth: false, isToday: false, events: [] });
     }
@@ -54,7 +57,6 @@ export class CalendarComponent implements OnInit {
       this.days.push({ date: date, dayOfMonth: i, isCurrentMonth: true, isToday: isToday, events: [] });
     }
 
-    // Complete the weeks of the month
     while (this.days.length % 7 !== 0) {
       const lastDate = this.days[this.days.length - 1].date;
       this.days.push({ date: new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate() + 1), dayOfMonth: -1, isCurrentMonth: false, isToday: false, events: [] });
@@ -64,8 +66,8 @@ export class CalendarComponent implements OnInit {
   }
 
   assignEventsToDays(): void {
-    this.days.forEach(day => {
-      const eventsToday = this.events.filter(event =>
+    this.days.forEach((day:Day) => {
+      const eventsToday = this.events.filter((event:CalendarEvent) =>
         event.date.getFullYear() === day.date.getFullYear() &&
         event.date.getMonth() === day.date.getMonth() &&
         event.date.getDate() === day.date.getDate());
@@ -77,4 +79,27 @@ export class CalendarComponent implements OnInit {
     this.currentMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + monthOffset, 1);
     this.generateCalendar();
   }
+
+  addEvent(): void {
+    if (!this.newEvent.title || !this.newEvent.date) {
+      alert('Title and date are required.');
+      return;
+    }
+  
+    // Pour le timezone et bug de offset
+    let eventDate = new Date(this.newEvent.date);
+    eventDate = new Date(eventDate.getTime() + eventDate.getTimezoneOffset() * 60000);
+  
+    const newEvent: CalendarEvent = {
+      id: Math.random().toString(36).substring(2, 9),
+      title: this.newEvent.title,
+      date: eventDate,
+    };
+  
+    this.events.push(newEvent);
+    this.newEvent = { id: '', title: '', date: new Date(),};
+    this.generateCalendar();
+  }
+  
+  
 }
