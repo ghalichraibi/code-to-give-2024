@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { residentStub } from '@common/stubs/residentStub';
+import { residentStub, caregiverStub } from '@common/stubs/residentStub';
 
 @Component({
   selector: 'app-personal-information',
@@ -8,21 +8,29 @@ import { residentStub } from '@common/stubs/residentStub';
 })
 export class PersonalInformationComponent {
     currentResident = residentStub;
+    currentCaregiver = caregiverStub;
+
     displayedInformation = [
-      { label: 'Nom', value: this.currentResident.lastName },
-      { label: 'Prénom', value: this.currentResident.firstName },
-      { label: 'Date de naissance', value: this.currentResident.birthDate.toLocaleDateString() },
-      { label: 'Lieu d\'hébergement', value: this.currentResident.currentLodging },
-      { label: 'Statut d\'immigration', value: this.currentResident.immigrationStatus },
-      { label: 'Autochtone', value: this.currentResident.isIndigenous },
-      { label: 'Ancien combattant', value: this.currentResident.isVeteran },
-      { label: 'Nombre d\'enfants', value: this.currentResident.numberOfChildren },
-      { label: 'Enjeux', value: this.currentResident.issues },
-      { label: 'Revenu mensuel', value: this.currentResident.monthlyIncome }
+      { label: 'Last name', value: this.currentResident.lastName },
+      { label: 'First name', value: this.currentResident.firstName },
+      { label: 'Birth Date', value: this.currentResident.birthDate.toLocaleDateString() },
+      { label: 'Place of accomodation', value: this.currentResident.currentLodging },
+      { label: 'Immigration Status', value: this.currentResident.immigrationStatus },
+      { label: 'Number of children', value: this.currentResident.numberOfChildren },
+      { label: 'Issues', value: this.currentResident.issues },
+      { label: 'Monthly income', value: this.currentResident.monthlyIncome + '$'},
+      { label: 'Native', value: this.currentResident.isIndigenous? 'Yes': 'No' },
+      { label: 'Veteran', value: this.currentResident.isVeteran? 'Yes' : 'No' }
     ];
     contactDetails = [
-      {label: 'Courriel', value: this.currentResident.email},
-      {label: 'Téléphone', value: this.currentResident.phoneNumber},
-      {label: 'Adresse', value: this.currentResident.borough}
+      {label: 'Email', value: this.currentResident.email},
+      {label: 'Phone Number', value: this.currentResident.phoneNumber},
+      {label: 'Borough', value: this.currentResident.borough}
+    ];
+
+    caregiverDetails = [
+      {label: 'full name', value: this.currentCaregiver.firstName +' '+  this.currentCaregiver.lastName},
+      {label: 'Email', value: this.currentCaregiver.email},
+      {label: 'Phone Number', value: this.currentCaregiver.phoneNumber}
     ];
 }

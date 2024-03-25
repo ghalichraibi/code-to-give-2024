@@ -1,28 +1,21 @@
 .profile-information-container {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: flex-start; /* Aligne les éléments en haut */
-    gap: 20px; 
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start; /* Aligner les éléments en haut */
+    gap: 20px;
 }
 
-.component-separator {
-    grid-column: 2;
-    height: 100%;
-    width: 1px;
-    background-color: rgba(0, 0, 0, 0.5);
-    margin: 0 20px;
-
-}
-
-.separator {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.5);
-    margin: 20px 0;
+.column {
+    display: flex;
+    flex-direction: column;
 }
 
 .section {
     text-align: center;
+    background-color: rgb(211, 211, 211);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .item {
@@ -39,4 +32,12 @@
 
 .value {
     text-align: right;
+}
+
+.current-care-giver{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
 }
