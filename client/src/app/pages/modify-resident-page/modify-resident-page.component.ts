@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommunicationService } from '@app/services/communication.service';
-import { Resident } from '@common/interfaces/stakeholders/users';
+import { Resident, UserRole } from '@common/interfaces/stakeholders/users';
+import { FormGroup } from "@angular/forms";
+import { FormlyFormOptions, FormlyFieldConfig } from "@ngx-formly/core";
+import { ResidentFormBuilder } from '@app/components/create-resident-dialog/resident-creation-form-builder';
+
 
 @Component({
   selector: 'app-modify-resident-page',
@@ -9,23 +13,52 @@ import { Resident } from '@common/interfaces/stakeholders/users';
   styleUrls: ['./modify-resident-page.component.scss']
 })
 export class ModifyResidentPageComponent {
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {};
+  fields: FormlyFieldConfig[] = [];
+
   residentId: string;
   resident: Resident;
-  constructor(private communicationService: CommunicationService, private route: ActivatedRoute){}
+  constructor(private communicationService: CommunicationService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
     this.residentId = this.route.snapshot.paramMap.get('id') || '';
-    this.communicationService.getUserById(this.residentId).subscribe((response) => {
-      if (response.body && response.body.role=='resident') {
+    this.communicationService.getUserById(this.residentId).subscribe(async (response) => {
+      if (response.body && response.body.role == 'resident') {
         this.resident = response.body;
-        console.log(this.resident);
+        
+        const residentFormBuilder = new ResidentFormBuilder(
+          this.communicationService
+        );
+        // Build your form structure first
+        this.fields = [
+          {
+            type: "stepper",
+            fieldGroup: await residentFormBuilder.buildForm(),
+          },
+        ];
 
+        // After building the form, set the model to fill the form fields
+        // You might need to adapt this part if the structure of Resident is different from the form
+        this.model = { ...this.resident };
       }
     });
-
   }
 
-  openDocument(document: string) {
-    console.log('Opened DOC!');
+  submit() {
+    this.model.role = UserRole.Resident;
+    console.log(this.model);
+    console.log(this.residentId);
+    
+    this.communicationService.updateUser(this.residentId, this.model).subscribe({
+      next: (response) => {
+        this.router.navigate(["/caregiver"]);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+    this.router.navigate(["/caregiver"]);
   }
 }
