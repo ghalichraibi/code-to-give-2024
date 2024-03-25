@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'caregiver', component: CaregiverDashboardComponent},
     { path: 'resident', component: ResidentPortalComponent},
     { path: 'resident-documents/:id', component: ResidentDocumentsComponent },
-    {path: 'admin', component: AdminPageComponent},   
+    { path: 'admin', component: AdminPageComponent },
     { path: '**', redirectTo: '/home' },
 ];
 

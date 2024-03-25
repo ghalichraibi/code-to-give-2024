@@ -1,7 +1,5 @@
 <mat-horizontal-stepper>
-  <mat-step
-    *ngFor="let step of field.fieldGroup; let index = index; let last = last"
-  >
+  <mat-step *ngFor="let step of field.fieldGroup; let index = index; let last = last">
     <h1 class="title">{{ step.props?.label }}</h1>
     <formly-field [field]="step"></formly-field>
 
@@ -9,8 +7,9 @@
       <button
         matStepperPrevious
         *ngIf="index !== 0"
-        class="btn btn-primary"
+        class="backprev"
         type="button"
+        [disabled]="!isValid(step)"
       >
         Back
       </button>
@@ -18,7 +17,7 @@
       <button
         matStepperNext
         *ngIf="!last"
-        class="btn btn-primary"
+        class="backprev"
         type="button"
         [disabled]="!isValid(step)"
       >
@@ -27,7 +26,7 @@
 
       <button
         *ngIf="last"
-        class="btn btn-primary"
+        class="backprev"
         [disabled]="!form.valid"
         type="submit"
       >
