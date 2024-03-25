@@ -34,7 +34,7 @@ export interface BaseUser extends BaseAccount {
 export interface Resident extends BaseUser {
   role: UserRoles.Resident;
   birthDate: Date;
-  caregivers: UserId[]; //
+  caregivers: UserId[];
   significantPeople: SignificantPerson[];
   immigrationStatus: ImmigrationStatus;
   isIndigenous: boolean;
