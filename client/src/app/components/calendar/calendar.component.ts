@@ -4,8 +4,10 @@ interface Day {
   date: Date;
   dayOfMonth: number;
   isCurrentMonth: boolean;
-  isToday: boolean; // Add this line
+  isToday: boolean;
+  events: CalendarEvent[]; // Add this line
 }
+
 
 interface CalendarEvent {
   id: string; // Unique identifier for the event
