@@ -1,4 +1,5 @@
 name: Server Image CI
+permissions: write-all
 
 on:
   push:
