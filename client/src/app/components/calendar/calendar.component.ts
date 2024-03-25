@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarService } from '@app/services/calendar.service';
 
 interface CalendarEvent {
   id: string;
@@ -23,17 +24,13 @@ export class CalendarComponent implements OnInit {
   currentMonth: Date = new Date();
   days: Day[] = [];
 
-  events: CalendarEvent[] = [
-    { id: '1', title: '[Zoom] Meeting with Omar', date: new Date(2024, 2, 12) },
-    { id: '2', title: '[Zoom] Meeting with Ghali', date: new Date(2024, 2, 26)},
-    { id: '3', title: '[Zoom] Meeting with Bob', date: new Date(2024, 2, 17) },
-  ];
-
   newEvent: CalendarEvent = {
     id: '',
     title: '',
     date: new Date(),
   };
+
+  constructor(private calendarService: CalendarService) {}
 
   ngOnInit(): void {
     this.generateCalendar();
@@ -67,7 +64,7 @@ export class CalendarComponent implements OnInit {
 
   assignEventsToDays(): void {
     this.days.forEach((day:Day) => {
-      const eventsToday = this.events.filter((event:CalendarEvent) =>
+      const eventsToday = this.calendarService.events.filter((event:CalendarEvent) =>
         event.date.getFullYear() === day.date.getFullYear() &&
         event.date.getMonth() === day.date.getMonth() &&
         event.date.getDate() === day.date.getDate());
@@ -96,10 +93,8 @@ export class CalendarComponent implements OnInit {
       date: eventDate,
     };
   
-    this.events.push(newEvent);
+    this.calendarService.events.push(newEvent);
     this.newEvent = { id: '', title: '', date: new Date(),};
     this.generateCalendar();
   }
-  
-  
 }
