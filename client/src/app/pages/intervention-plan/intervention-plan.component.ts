@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { CreatePlanDialogComponent } from '@app/components/create-plan-dialog/create-plan-dialog.component';
 import { CommunicationService } from '@app/services/communication.service';
 import { InterventionPlan } from '@common/interfaces/documents/intervention-plan.interface';
 import { Resident } from '@common/interfaces/stakeholders/users';
@@ -11,19 +13,34 @@ import { Resident } from '@common/interfaces/stakeholders/users';
 })
 export class InterventionPlanComponent {
 
-deletePlan(plan: InterventionPlan) {
-throw new Error('Method not implemented.');
-}
+  constructor(private communicationService: CommunicationService, private route: ActivatedRoute, private matDialog: MatDialog){}
 
-modifyPlan(plan: InterventionPlan) {
-throw new Error('Method not implemented.');
-}
   resident: Resident;
   residentId: string;
   plan: InterventionPlan;
 
-  constructor(private communicationService: CommunicationService, private route: ActivatedRoute){}
+  deletePlan(plan: InterventionPlan) {
+    this.communicationService.deletePlan(this.residentId).subscribe(() => {
+    // Do something? No...?
+    });
+  }
 
+  modifyPlan(plan: InterventionPlan) {
+    this.matDialog
+    .open(CreatePlanDialogComponent)
+    .afterClosed()
+    .subscribe(() => {
+      this.communicationService.updatePlan(this.residentId, plan).subscribe(() => {
+        this.communicationService.getPlans().subscribe((response) => {
+          response.forEach((plan) => {
+            if (plan.resident == this.residentId) {
+              this.plan = plan;
+            }
+          });
+        });
+      });
+    });
+  }
   ngOnInit(): void {
     this.residentId = this.route.snapshot.paramMap.get('id') || '';
     this.communicationService.getPlans().subscribe((response) => {
