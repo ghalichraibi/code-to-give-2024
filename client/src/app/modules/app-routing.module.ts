@@ -6,6 +6,7 @@ import { MainPageComponent } from '@app/pages/main-page/main-page.component';
 import { ResidentPortalComponent } from '@app/pages/resident-portal/resident-portal.component';
 import { ResidentDocumentsComponent } from '@app/pages/resident-documents/resident-documents.component';
 import { AdminPageComponent } from '@app/pages/admin-page/admin-page.component';
+import { InterventionPlanComponent } from '@app/pages/intervention-plan/intervention-plan.component';
 import { ModifyResidentPageComponent } from '@app/pages/modify-resident-page/modify-resident-page.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'modify-resident/:id', component: ModifyResidentPageComponent },
     { path: 'resident-documents/:id', component: ResidentDocumentsComponent },
     { path: 'admin', component: AdminPageComponent },
+    { path: 'intervention-plan/:id', component: InterventionPlanComponent },
     { path: '**', redirectTo: '/home' },
 ];
 
