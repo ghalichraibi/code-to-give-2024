@@ -86,7 +86,7 @@ h1 {
 }
 
 .username-input, .password-input {
-    width: 85%;
+    width: -webkit-fill-available;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ddd;
