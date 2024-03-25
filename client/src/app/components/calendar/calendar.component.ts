@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from '@app/services/calendar.service';
-
+import { Router } from '@angular/router';
 interface CalendarEvent {
   id: string;
   title: string;
@@ -12,7 +12,7 @@ interface Day {
   dayOfMonth: number;
   isCurrentMonth: boolean;
   isToday: boolean;
-  events: CalendarEvent[]; // Now includes an array of CalendarEvents
+  events: CalendarEvent[];
 }
 
 @Component({
@@ -23,6 +23,7 @@ interface Day {
 export class CalendarComponent implements OnInit {
   currentMonth: Date = new Date();
   days: Day[] = [];
+  showAddEventForm = false;
 
   newEvent: CalendarEvent = {
     id: '',
@@ -30,7 +31,7 @@ export class CalendarComponent implements OnInit {
     date: new Date(),
   };
 
-  constructor(private calendarService: CalendarService) {}
+  constructor(private calendarService: CalendarService,  private router: Router) {}
 
   ngOnInit(): void {
     this.generateCalendar();
@@ -43,7 +44,6 @@ export class CalendarComponent implements OnInit {
     const daysInMonth = lastDay.getDate();
     const dayOfWeek = firstDay.getDay();
 
-    // Commencer dimanche
     for (let i = 0; i < dayOfWeek; i++) {
       this.days.push({ date: new Date(firstDay.getFullYear(), firstDay.getMonth(), -i), dayOfMonth: -1, isCurrentMonth: false, isToday: false, events: [] });
     }
@@ -82,8 +82,6 @@ export class CalendarComponent implements OnInit {
       alert('Title and date are required.');
       return;
     }
-  
-    // Pour le timezone et bug de offset
     let eventDate = new Date(this.newEvent.date);
     eventDate = new Date(eventDate.getTime() + eventDate.getTimezoneOffset() * 60000);
   
@@ -96,5 +94,13 @@ export class CalendarComponent implements OnInit {
     this.calendarService.events.push(newEvent);
     this.newEvent = { id: '', title: '', date: new Date(),};
     this.generateCalendar();
+  }
+
+  toggleAddEventForm() {
+    this.showAddEventForm = !this.showAddEventForm;
+  }
+ 
+  isResident(): boolean {
+    return this.router.url.includes('resident');
   }
 }

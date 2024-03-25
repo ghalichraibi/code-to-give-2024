@@ -1,8 +1,9 @@
 <div class="calendar-container">
+    <button (click)="toggleAddEventForm()" *ngIf="!isResident()" class="new">&#43;</button>
     <div class="calendar-controls">
-      <button (click)="navigate(-1)">Previous</button>
+      <button (click)="navigate(-1)" class="backprev">Previous</button>
       <span>{{ currentMonth | date: 'MMMM yyyy' }}</span>
-      <button (click)="navigate(1)">Next</button>
+      <button (click)="navigate(1)" class="backprev">Next</button>
     </div>
     <div class="calendar-grid">
       <div class="day-header" *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']">{{ day }}</div>
@@ -19,8 +20,8 @@
     </div>
 </div>
 
-<div class="add-event-form">
-    <form (ngSubmit)="addEvent()">
+<div class="add-event-form" *ngIf="showAddEventForm">
+    <form class="dialog-content" (ngSubmit)="addEvent()">
         <div>
             <label for="eventTitle">Event Title:</label>
             <input type="text" id="eventTitle" [(ngModel)]="newEvent.title" name="title" required>
@@ -29,6 +30,9 @@
             <label for="eventDate">Event Date:</label>
             <input type="date" id="eventDate" [(ngModel)]="newEvent.date" name="date" required>
         </div>
-        <button type="submit">Add Event</button>
+        <div class="buttons">
+          <button class="cancel" (click)="toggleAddEventForm()">cancel</button>
+          <button type="submit" (click)="toggleAddEventForm()">Add Event</button>
+        </div>
     </form>
 </div>
