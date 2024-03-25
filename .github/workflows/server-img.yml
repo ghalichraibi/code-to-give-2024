@@ -12,6 +12,7 @@ on:
     paths:
       - 'common/**'
       - 'server/**'
+  workflow_dispatch:
 
 jobs:
 
