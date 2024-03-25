@@ -145,6 +145,7 @@ StepByStep is built using a robust development stack, including but not limited 
 - Git and GitHub for version control and collaboration
 - Angular for frontend development
 - NestJS for backend development and RESTful API endpoints
+[StepByStep Server API](https://api.rustaheat.co/)
 - MongoDB for efficient storage and retrieval of data
 - Socket.IO for real-time communication
 - MongoDB Atlas for cloud-hosted database management
