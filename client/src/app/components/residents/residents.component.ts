@@ -1,17 +1,27 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CommunicationService } from '@app/services/communication.service';
-import { Resident } from '@common/interfaces/stakeholders/users';
+/* eslint-disable import/no-unresolved */
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { CommunicationService } from "@app/services/communication.service";
+import { Resident } from "@common/interfaces/stakeholders/users";
+import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { CreateResidentDialogComponent } from "../create-resident-dialog/create-resident-dialog.component";
+import { CreatePlanDialogComponent } from "../create-plan-dialog/create-plan-dialog.component";
 
 @Component({
-  selector: 'app-residents',
-  templateUrl: './residents.component.html',
-  styleUrls: ['./residents.component.scss']
+  selector: "app-residents",
+  templateUrl: "./residents.component.html",
+  styleUrls: ["./residents.component.scss"],
 })
 export class ResidentsComponent implements OnInit {
+
   @Output() openChatRequest = new EventEmitter<any>();
   residents: Resident[] = [];
 
-  constructor(private communicationService: CommunicationService) {}
+  constructor(
+    private communicationService: CommunicationService,
+    private router: Router,
+    private matDialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.fetchResidents();
@@ -29,19 +39,33 @@ export class ResidentsComponent implements OnInit {
   }
 
   modifyInfo(resident: any) {
-    console.log('Modifying info of resident:', resident);
+    console.log("Modifying info of resident:", resident);
   }
 
   viewDocuments(resident: any) {
-    console.log('Viewing documents of resident:', resident);
+    console.log(resident.id);
+    this.router.navigate(["/resident-documents", resident.id]);
   }
 
-  getAgeFromBirthDate(birthDate: string) {
+  getAgeFromBirthDate(birthDate: Date) {
     const today = new Date();
     const birth = new Date(birthDate);
     let age = today.getFullYear() - birth.getFullYear();
     const m = today.getMonth() - birth.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
     return age;
+  }
+
+  createNewResident() {
+    this.matDialog
+      .open(CreateResidentDialogComponent)
+      .afterClosed()
+      .subscribe(() => {
+        this.fetchResidents();
+      });
+  }
+
+  createPlan(resident: Resident) {
+    this.matDialog.open(CreatePlanDialogComponent).afterClosed().subscribe(() => {}); // Refresh plans?
   }
 }

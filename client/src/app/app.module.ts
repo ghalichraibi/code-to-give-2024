@@ -1,29 +1,34 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '@app/modules/app-routing.module';
-import { AppMaterialModule } from '@app/modules/material.module';
-import { AppComponent } from '@app/pages/app/app.component';
-import { MainPageComponent } from '@app/pages/main-page/main-page.component';
-import { AboutPageComponent } from './pages/about-page/about-page.component';
-import { ResidentPortalComponent } from './pages/resident-portal/resident-portal.component';
-import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
-import { ObjectivesComponent } from './components/objectives/objectives.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ResourcesComponent } from './components/resources/resources.component';
-import { CaregiverDashboardComponent } from './pages/caregiver-dashboard/caregiver-dashboard.component';
-import { ResidentsComponent } from './components/residents/residents.component';
-import { StatisticsComponent } from './components/statistics/statistics.component';
-import { AuditTrailComponent } from './components/audit-trail/audit-trail.component';
-import { ChatComponent } from './components/chat/chat.component';
-import { ResidentFormComponent } from './resident-form/resident-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { SignificantPersonFormComponent } from './significant-person-form/significant-person-form.component';
-import { PlanFormComponent } from './plan-form/plan-form.component';
-import { EventFormComponent } from './event-form/event-form.component';
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppRoutingModule } from "@app/modules/app-routing.module";
+import { AppMaterialModule } from "@app/modules/material.module";
+import { AppComponent } from "@app/pages/app/app.component";
+import { MainPageComponent } from "@app/pages/main-page/main-page.component";
+import { AboutPageComponent } from "./pages/about-page/about-page.component";
+import { ResidentPortalComponent } from "./pages/resident-portal/resident-portal.component";
+import { PersonalInformationComponent } from "./components/personal-information/personal-information.component";
+import { CalendarComponent } from "./components/calendar/calendar.component";
+import { ObjectivesComponent } from "./components/objectives/objectives.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { ResourcesComponent } from "./components/resources/resources.component";
+import { NgFor } from "@angular/common";
+import { MatIconModule } from "@angular/material/icon";
+import { CaregiverDashboardComponent } from "./pages/caregiver-dashboard/caregiver-dashboard.component";
+import { ResidentsComponent } from "./components/residents/residents.component";
+import { StatisticsComponent } from "./components/statistics/statistics.component";
+import { AuditTrailComponent } from "./components/audit-trail/audit-trail.component";
+import { ChatComponent } from "./components/chat/chat.component";
+import { ResidentDocumentsComponent } from "./pages/resident-documents/resident-documents.component";
+import { AdminPageComponent } from "./pages/admin-page/admin-page.component";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CreateResidentDialogComponent } from "./components/create-resident-dialog/create-resident-dialog.component";
+import { MatStepperModule } from "@angular/material/stepper";
+import { FormlyModule } from "@ngx-formly/core";
+import { FormlyBootstrapModule } from "@ngx-formly/bootstrap";
+import { FormlyFieldStepperComponent } from "./components/formly-field-stepper/formly-field-stepper.component";
 
 /**
  * Main module that is used in main.ts.
@@ -32,9 +37,57 @@ import { EventFormComponent } from './event-form/event-form.component';
  * Otherwise Angular Cli will not know in which module to put new component
  */
 @NgModule({
-    declarations: [AppComponent, MainPageComponent, AboutPageComponent, CaregiverDashboardComponent, ResidentPortalComponent, PersonalInformationComponent, CalendarComponent, ObjectivesComponent, HeaderComponent, ResourcesComponent, ResidentsComponent, StatisticsComponent, AuditTrailComponent, ChatComponent, ResidentFormComponent, SignificantPersonFormComponent, PlanFormComponent, EventFormComponent],
-    imports: [AppMaterialModule, AppRoutingModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule],
-    providers: [],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    MainPageComponent,
+    AboutPageComponent,
+    CaregiverDashboardComponent,
+    ResidentPortalComponent,
+    PersonalInformationComponent,
+    CalendarComponent,
+    ObjectivesComponent,
+    HeaderComponent,
+    ResourcesComponent,
+    ResidentsComponent,
+    StatisticsComponent,
+    AuditTrailComponent,
+    ChatComponent,
+    ResidentDocumentsComponent,
+    AdminPageComponent,
+    CreateResidentDialogComponent,
+    FormlyFieldStepperComponent,
+  ],
+  imports: [
+    AppMaterialModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    NgFor,
+    MatIconModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    FormlyBootstrapModule,
+    FormlyModule.forRoot({
+      validationMessages: [
+        { name: "required", message: "This field is required" },
+      ],
+      types: [
+        {
+          name: "stepper",
+          component: FormlyFieldStepperComponent,
+          wrappers: [],
+        },
+        // {
+        //   name: "repeat",
+        //   component: RepeatTypeComponent,
+        // },
+      ],
+    }),
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

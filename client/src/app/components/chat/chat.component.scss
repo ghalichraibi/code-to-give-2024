@@ -12,6 +12,9 @@
     background-color: #fff;
     color: #a8b7ee;
     user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 15px;
     text-align: center;
     font-size: 1.5rem;
@@ -21,7 +24,7 @@
 }
 
 .chat-history {
-    height: 60vh;
+    height: 62vh;
     white-space: nowrap;
     word-wrap: break-word;
     flex-grow: 1;
@@ -55,11 +58,10 @@
     white-space: normal;
     word-wrap: break-word;
     color: #fff;
-    border: 1px solid #5F9EA0;
 }
 
 .message-box.sent {
-    background-color: #7B68EE;
+    background-color: #6890ee;
     border-bottom-right-radius: 0;
     margin-left: 10px;
 }
@@ -96,17 +98,27 @@
 .chat-input button {
     width: 90px;
     padding: 10px 20px;
-    background-color: #7B68EE;
+    background-color: #6890ee;
     color: #fff;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
     &:hover {
-        background-color: #6A5ACD;
+        background-color: #4b69af;
     }
     &:disabled {
         background-color: #778899;
         color: #708090;
     }
+}
+
+.close-chat {
+    background-color: #f8c0cb;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
 }

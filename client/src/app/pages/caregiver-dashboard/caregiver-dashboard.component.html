@@ -15,6 +15,6 @@
         <app-audit-trail *ngIf="selectedOption === 'Audit Trail' "></app-audit-trail>
       </div>
     </div>
-    <app-chat *ngIf="selectedResident" [resident]="selectedResident" class="chat-box"></app-chat>
+    <app-chat *ngIf="selectedResident" [resident]="selectedResident" (closeChat)="closeChat()" class="chat-box"></app-chat>
   </div>
 </body>

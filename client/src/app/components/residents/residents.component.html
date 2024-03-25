@@ -3,12 +3,16 @@
     <div *ngFor="let resident of residents" class="resident">
         <div class="resident-info">
             <div class="name">{{ resident.firstName }} {{ resident.lastName }}</div>
-            <div class="age">Age: {{ getAgeFromBirthDate(resident.birthDate) }}</div>
+            <div>Age: {{ getAgeFromBirthDate(resident.birthDate) }}</div>
+            <div>Email: {{ resident.email }}</div>
         </div>
         <div class="actions">
             <button (click)="openChat(resident)">Chat</button>
             <button (click)="modifyInfo(resident)">Modify Info</button>
+            <button (click)="createPlan(resident)">Create Plan</button>
             <button (click)="viewDocuments(resident)">View Documents</button>
         </div>
     </div>
+    <div *ngIf="!residents || residents.length === 0" class="no-residents">No residents found</div>
+    <div class="add-new-resident" (click)="createNewResident()"></div>
 </div>
