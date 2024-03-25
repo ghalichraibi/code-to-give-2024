@@ -1,1 +1,28 @@
-<p>statistics works!</p>
+<div class="container mt-4">
+  <h2>General Resident Statistics</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Total Women Supported: {{ generalResidentStats.totalWomenSupported }}</li>
+    <li class="list-group-item">Average Age: {{ generalResidentStats.averageAge }}</li>
+    <li class="list-group-item">Average Satisfaction Rating: {{ generalResidentStats.averageSatisfactionRating }}</li>
+  </ul>
+
+  <h2 class="mt-4">General Application Statistics</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Total Messages Sent: {{ applicationStats.totalMessagesSent }}</li>
+    <li class="list-group-item">Total Intervention Plans Created: {{ applicationStats.totalPlansCreated }}</li>
+  </ul>
+
+  <h2 class="mt-4">Women Profile Statistics</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Precarious Immigration Status: {{ womenProfileStats.precariousStatusPercent }}%</li>
+    <li class="list-group-item">Mental Health Issues: {{ womenProfileStats.mentalHealthIssuesPercent }}%</li>
+    <li class="list-group-item">Physical Health Issues: {{ womenProfileStats.physicalHealthIssuesPercent }}%</li>
+    <li class="list-group-item">Victims of Violence: {{ womenProfileStats.violenceVictimsPercent }}%</li>
+    <li class="list-group-item">Challenged by Addiction: {{ womenProfileStats.hasAddiction }}%</li>
+    <li class="list-group-item">Identify as Transgender: {{ womenProfileStats.transgenderPercent }}%</li>
+    <li class="list-group-item">Recently Evicted: {{ womenProfileStats.recentlyEvictedPercent }}%</li>
+  </ul>
+
+  <button (click)="exportToCSV()" class="btn btn-primary">Export to CSV</button>
+
+</div>

@@ -1,1 +1,9 @@
-<p>audit-trail works!</p>
+<div class="container">
+<h2>Audit Trail</h2>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let event of events">
+        {{ event.timestamp | date:'medium' }}: {{ event.message }}
+    </li>
+</ul>
+</div>
+  
