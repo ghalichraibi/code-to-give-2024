@@ -30,7 +30,7 @@
         [disabled]="!form.valid"
         type="submit"
       >
-        Create Resident
+        {{ isModifyPage ? 'Modify Resident' : 'Create Resident' }}
       </button>
     </div>
   </mat-step>
