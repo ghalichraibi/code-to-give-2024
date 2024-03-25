@@ -1,4 +1,5 @@
-<div class="container mt-4">
+<div class="container">
+  <button onclick="exportToCSV()" class="btn btn-primary">Export to CSV</button>
   <h2>General Resident Statistics</h2>
   <ul class="list-group">
     <li class="list-group-item">Total Women Supported: {{ generalResidentStats.totalWomenSupported }}</li>
@@ -14,15 +15,40 @@
 
   <h2 class="mt-4">Women Profile Statistics</h2>
   <ul class="list-group">
-    <li class="list-group-item">Precarious Immigration Status: {{ womenProfileStats.precariousStatusPercent }}%</li>
-    <li class="list-group-item">Mental Health Issues: {{ womenProfileStats.mentalHealthIssuesPercent }}%</li>
-    <li class="list-group-item">Physical Health Issues: {{ womenProfileStats.physicalHealthIssuesPercent }}%</li>
-    <li class="list-group-item">Victims of Violence: {{ womenProfileStats.violenceVictimsPercent }}%</li>
-    <li class="list-group-item">Challenged by Addiction: {{ womenProfileStats.hasAddiction }}%</li>
-    <li class="list-group-item">Identify as Transgender: {{ womenProfileStats.transgenderPercent }}%</li>
-    <li class="list-group-item">Recently Evicted: {{ womenProfileStats.recentlyEvictedPercent }}%</li>
+    <li class="list-group-item">
+      Precarious Immigration Status:
+      <div class="bar" style="width: {{ womenProfileStats.precariousStatusPercent }}%;"></div>
+      <span class="percent">{{ womenProfileStats.precariousStatusPercent }}%</span>
+    </li>
+    <li class="list-group-item">
+      Mental Health Issues:
+      <div class="bar" style="width: {{ womenProfileStats.mentalHealthIssuesPercent }}%;"></div>
+      <span class="percent">{{ womenProfileStats.mentalHealthIssuesPercent }}%</span>
+    </li>
+    <li class="list-group-item">
+      Physical Health Issues:
+      <div class="bar" style="width: {{ womenProfileStats.physicalHealthIssuesPercent }}%;"></div>
+      <span class="percent">{{ womenProfileStats.physicalHealthIssuesPercent }}%</span>
+    </li>
+    <li class="list-group-item">
+      Victims of Violence:
+      <div class="bar" style="width: {{ womenProfileStats.violenceVictimsPercent }}%;"></div>
+      <span class="percent">{{ womenProfileStats.violenceVictimsPercent }}%</span>
+    </li>
+    <li class="list-group-item">
+      Challenged by Addiction:
+      <div class="bar" style="width: {{ womenProfileStats.hasAddiction }}%;"></div>
+      <span class="percent">{{ womenProfileStats.hasAddiction }}%</span>
+    </li>
+    <li class="list-group-item">
+      Identify as Transgender:
+      <div class="bar" style="width: {{ womenProfileStats.transgenderPercent }}%;"></div>
+      <span class="percent">{{ womenProfileStats.transgenderPercent }}%</span>
+    </li>
+    <li class="list-group-item">
+      Recently Evicted:
+      <div class="bar" style="width: {{ womenProfileStats.recentlyEvictedPercent }}%;"></div>
+      <span class="percent">{{ womenProfileStats.recentlyEvictedPercent }}%</span>
+    </li>
   </ul>
-
-  <button (click)="exportToCSV()" class="btn btn-primary">Export to CSV</button>
-
 </div>
