@@ -3,6 +3,7 @@
       <h1 class="dialog-title">Modify Resident</h1>
       <form [formGroup]="form" (ngSubmit)="submit()">
         <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+        <button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
       </form>
     </div>
 </div>

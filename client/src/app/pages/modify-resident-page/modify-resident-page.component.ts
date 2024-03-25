@@ -57,4 +57,8 @@ export class ModifyResidentPageComponent {
     });
     this.router.navigate(["/caregiver"]);
   }
+
+  cancel() {
+    this.router.navigate(["/caregiver"]);
+  }
 }
