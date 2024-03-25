@@ -1,0 +1,21 @@
+name: Server Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        docker login --username ${{github.actor}} --password ${{ secrets.GITHUB_TOKEN }} ghcr.io
+        docker build . -f ./server/Dockerfile --platform linux/amd64 --tag ghcr.io/ghalichraibi/code-to-give-2024-ghcr:lastest
+        docker push ghcr.io/ghalichraibi/code-to-give-2024-ghcr:lastest
