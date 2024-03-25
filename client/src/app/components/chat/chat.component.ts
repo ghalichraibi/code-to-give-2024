@@ -1,75 +1,104 @@
-import { AfterViewInit, Component, Input, ElementRef, OnInit, QueryList, ViewChildren, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { UserRoles } from '../../../../../common/enums/user-roles.enum';
-import { WebSocketService } from '@app/services/websocket.service';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChildren,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from "@angular/core";
+import { UserRoles } from "../../../../../common/enums/user-roles.enum";
+import { WebSocketService } from "@app/services/websocket.service";
+import { Subscription } from "rxjs";
+import { Resident } from "@common/interfaces/stakeholders/users";
+import { Message } from "@common/interfaces/message.interface";
+import { UserService } from "@app/services/user.service";
 
 @Component({
-    selector: 'app-chat',
-    templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.scss'],
+  selector: "app-chat",
+  templateUrl: "./chat.component.html",
+  styleUrls: ["./chat.component.scss"],
 })
 export class ChatComponent implements AfterViewInit, OnInit, OnDestroy {
-    @Input() resident: any;
-    @Output() closeChat = new EventEmitter<void>();
+  @Input() resident: Resident;
+  @Output() closeChat = new EventEmitter<void>();
 
-    @ViewChildren('messageList', { read: ElementRef }) messageList: QueryList<ElementRef>;
-    roomMessages: string[] = [];
-    roomMessage = '';
-    isMessageTooLong: boolean = false;
-    userRole: UserRoles;
-    message: Subscription;
+  @ViewChildren("messageList", { read: ElementRef })
+  messageList: QueryList<ElementRef>;
+  roomMessages: Message[] = [];
+  roomMessage = "";
+  isMessageTooLong: boolean = false;
+  userRole: UserRoles;
+  message: Subscription;
 
-    constructor(private readonly webSocketService: WebSocketService, private router: Router){}
+  constructor(
+    private readonly webSocketService: WebSocketService,
+    private readonly userService: UserService
+  ) {}
 
-        ngOnDestroy(): void {
-        if (this.message) {
-            this.message.unsubscribe();
-        }
-    }
+  ngOnDestroy(): void {
+    this.message?.unsubscribe();
+  }
 
-    async ngOnInit() {
-        this.message = this.webSocketService.getMessage().subscribe((message: string) => {
-            this.roomMessages.push(message);
-        });
-        await this.joinChat();
-    }
+  async ngOnInit() {
+    this.message = this.webSocketService
+      .getMessage()
+      .subscribe((message: Message) => {
+        this.roomMessages.push(message);
+      });
+    await this.joinChat();
+  }
 
-    onChatClose(): void {
-        this.closeChat.emit();
-    }
+  refreshChat(): void {
+    this.roomMessages = [];
+    this.joinChat();
+  }
 
-    async joinChat() {
-        this.roomMessages = await this.webSocketService.joinChat();
-    }
+  onChatClose(): void {
+    this.closeChat.emit();
+  }
 
-    scrollToBottomAfterViewChecked(): void {
-        // this.messageList.last.nativeElement.scrollIntoView({ behavior: 'smooth' });
-    }
+  async joinChat() {
+    this.roomMessages = await this.webSocketService.joinChat(this.resident.id);
+  }
 
-    scrollToBottom(): void {
-        // this.messageList.changes.subscribe(() => {
-        //     this.scrollToBottomAfterViewChecked();
-        // });
-    }
+  scrollToBottomAfterViewChecked(): void {
+    // this.messageList.last.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
 
-    ngAfterViewInit(): void {
-        this.scrollToBottom();
-    }
+  scrollToBottom(): void {
+    // this.messageList.changes.subscribe(() => {
+    //     this.scrollToBottomAfterViewChecked();
+    // });
+  }
 
-    sendToRoom(): void {
-        const currentDate = new Date();
-        if (this.roomMessage.trim() === '') return;
-        this.roomMessage = `[${currentDate.getHours()}h:${currentDate.getMinutes()}min You]: ${this.roomMessage}`;
-        this.webSocketService.sendMessage(this.roomMessage);
-        this.roomMessage = '';
-    }
+  ngAfterViewInit(): void {
+    this.scrollToBottom();
+  }
 
-    isSent(message: string): boolean {
-        return message.split(' ').includes('You]:');
-    }
+  sendToRoom(): void {
+    console.log(this.resident);
+    const message: Message = {
+      channel: this.resident.id,
+      senderId: this.userService.user!.id,
+      senderName: `${this.userService.user!.firstName} ${
+        this.userService.user!.lastName
+      }`,
+      content: this.roomMessage,
+      timestamp: new Date().getTime(),
+    };
+    this.roomMessage = "";
+    this.webSocketService.sendMessage(this.resident.id, message);
+  }
 
-    isResident(): boolean {
-        return this.router.url.includes('resident');
-    }
+  isSent(message: Message): boolean {
+    return message.senderId === this.userService.user!.id;
+  }
+
+  isResident(): boolean {
+    return this.userService.user?.role === UserRoles.Resident;
+  }
 }

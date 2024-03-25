@@ -61,6 +61,18 @@ export class CommunicationService {
       );
   }
 
+  getUserByEmail(email: string): Observable<HttpResponse<User>> {
+    return this.http
+      .get<User>(`${this.baseUrl}/users/email/${email}`, {
+        observe: "response",
+      })
+      .pipe(
+        catchError((error) => {
+          return of(error);
+        })
+      );
+  }
+
   updateUser(id: string, user: User): Observable<HttpResponse<User>> {
     return this.http
       .patch<User>(`${this.baseUrl}/users/${id}`, user, { observe: "response" })

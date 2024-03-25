@@ -38,7 +38,9 @@
           class="password-input"
           [(ngModel)]="password"
         />
-        {{ errorMessage }}
+        <span class="error-message">
+          {{ errorMessage }}
+        </span>
         <button
           class="login-button"
           (click)="onLogin()"

@@ -39,6 +39,7 @@ export class CreateResidentDialogComponent {
 
   submit() {
     this.model.role = UserRole.Resident;
+    this.model.caregivers = [];
     this.communicationService.createUser(this.model).subscribe({
       next: (response) => {
         this.dialogRef.close(response);

@@ -21,24 +21,42 @@ export class MainPageComponent implements OnDestroy {
   constructor(
     private router: Router,
     private userService: UserService
-  ) {}
+  ) {
+    this.userService.clearUser();
+  }
 
   onLogin() {
-    if (!this.isValidCredentials(this.email, this.password)) {
-      this.errorMessage = "The credentials you entered are incorrect.";
-      return;
-    }
-
-    this.userService.setUsernameFromEmail(this.email);
-
     switch (this.selectedOption) {
       case "caregiver":
-        this.router.navigate(["/caregiver"]);
+        this.logInCaregiver();
         break;
       case "resident":
-        this.router.navigate(["/resident"]);
+        this.logInResident();
         break;
     }
+  }
+
+  logInCaregiver() {
+    if (!this.isValidCredentials(this.email, this.password)) {
+      this.displayErrorMessage();
+      return;
+    }
+    this.userService.setFakeCaregiver(this.email);
+    this.router.navigate(["/caregiver"]);
+  }
+
+  async logInResident() {
+    try {
+      await this.userService.setResident(this.email);
+      console.log(this.userService.user);
+      this.router.navigate(["/resident"]);
+    } catch (error) {
+      this.displayErrorMessage();
+    }
+  }
+
+  displayErrorMessage(): void {
+    this.errorMessage = "The credentials you entered are incorrect.";
   }
 
   ngOnDestroy() {

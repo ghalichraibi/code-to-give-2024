@@ -65,6 +65,15 @@ export class UserService implements OnModuleInit {
     }
   }
 
+  async getUserByEmail(email: string): Promise<User> {
+    try {
+      const user = await this.usersCollection.findOne({ email });
+      return Promise.resolve(user);
+    } catch (error) {
+      return Promise.reject(`Failed to get user: ${error}`);
+    }
+  }
+
   async getAllUsers(): Promise<User> {
     try {
       const users = await this.usersCollection.find().toArray();

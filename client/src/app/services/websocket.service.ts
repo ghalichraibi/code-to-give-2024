@@ -1,51 +1,55 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { Socket, io } from 'socket.io-client';
-import { environment } from 'src/environments/environment';
+import { Injectable } from "@angular/core";
+import { Message } from "@common/interfaces/message.interface";
+import { Observable, Subject } from "rxjs";
+import { Socket, io } from "socket.io-client";
+import { environment } from "src/environments/environment";
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: "root",
 })
 export class WebSocketService {
-    private socket: Socket;
-    private chatSubject: Subject<string> = new Subject<string>();
+  private socket: Socket;
+  private chatSubject: Subject<Message> = new Subject<Message>();
 
-    constructor() {
-        this.connect();
-    }
+  constructor() {
+    this.connect();
+  }
 
-    get id(): string {
-        return this.socket.id;
-    }
+  get id(): string {
+    return this.socket.id;
+  }
 
-    sendMessage(message: string): void {
-        this.socket.emit('message:send', message);
-    }
+  sendMessage(channelId: string, message: Message): void {
+    console.log("Sending message:", message + " to channel:", channelId);
+    this.socket.emit("message:send", { channelId, message });
+  }
 
-    getMessage(): Observable<string> {
-        return this.chatSubject.asObservable();
-    }
+  getMessage(): Observable<Message> {
+    return this.chatSubject.asObservable();
+  }
 
-    async joinChat(): Promise<string[]> {
-        return new Promise((resolve) => {
-            this.socket.emit('message:join', (messages: string[]) => {
-                resolve(messages);
-            });
-        });
-    }
+  async joinChat(channelId: string): Promise<Message[]> {
+    return new Promise((resolve) => {
+      console.log("Joining chat with resident:", channelId);
+      this.socket.emit("message:join", channelId, (messages: Message[]) => {
+        console.log("Messages:", messages);
+        resolve(messages);
+      });
+    });
+  }
 
-    private createSocket(): Socket {
-        return io(environment.wsUrl, { transports: ['websocket'] });
-    }
+  private createSocket(): Socket {
+    return io(environment.wsUrl, { transports: ["websocket"] });
+  }
 
-    private connect() {
-        this.socket = this.createSocket();
-        this.listenForChat();
-    }
+  private connect() {
+    this.socket = this.createSocket();
+    this.listenForChat();
+  }
 
-    private listenForChat() {
-        this.socket.on('message:receive', (message: string) => {
-            this.chatSubject.next(message);
-        });
-    }
+  private listenForChat() {
+    this.socket.on("message:receive", (message: Message) => {
+      this.chatSubject.next(message);
+    });
+  }
 }

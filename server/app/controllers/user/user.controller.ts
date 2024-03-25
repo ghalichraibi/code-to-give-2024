@@ -64,6 +64,19 @@ export class UserController {
     }
   }
 
+  @Get("/email/:email")
+  async getUserByEmail(
+    @Param("email") email: string,
+    @Res() response: Response
+  ) {
+    try {
+      const user = await this.usersService.getUserByEmail(email);
+      response.status(HttpStatus.OK).json(user);
+    } catch (error) {
+      response.status(HttpStatus.NOT_FOUND).send(error.message);
+    }
+  }
+
   @Post("/")
   async createUser(@Body() data: any, @Res() response: Response) {
     try {
