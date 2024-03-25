@@ -25,5 +25,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker login --username ${{github.actor}} --password ${{ secrets.GITHUB_TOKEN }} ghcr.io
-        docker build . -f ./client/Dockerfile --platform linux/amd64 --tag ghcr.io/ghalichraibi/code-to-give-2024-client:lastest
-        docker push ghcr.io/ghalichraibi/code-to-give-2024-client:lastest
+        docker build . -f ./client/Dockerfile --platform linux/amd64 --tag ghcr.io/ghalichraibi/code-to-give-2024-client:latest
+        docker push ghcr.io/ghalichraibi/code-to-give-2024-client:latest
