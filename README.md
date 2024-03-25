@@ -43,7 +43,7 @@ Le Chaînon Foundation, founded in 1932, is dedicated to welcoming women in diff
 
 ## StepByStep Web Platform
 
-![StepByStep](/doc/main-page.png) 
+![StepByStep](/doc/about-page.png) 
 
 ### Overview
 
@@ -89,7 +89,7 @@ The user interface of StepByStep is designed to be intuitive and user-friendly, 
 
 #### Landing Page
 
-![LandingPage](/doc/main-page.png)
+![LandingPage](/doc/landing-page.png)
 
 - Description: Welcome page introducing the purpose of the application and its significance for Le Chaînon.
 - Components:
@@ -101,7 +101,8 @@ The user interface of StepByStep is designed to be intuitive and user-friendly, 
 
 #### Caregiver Dashboard
 
-![CaregiverDashboard](/doc/main-page.png)
+![CaregiverDashboard](/doc/residents.png)
+![CaregiverDashboard](/doc/statistics.png)
 
 - Description: Interface for caregivers to manage intervention plans, communicate with residents, and access statistics.
 - Components:
@@ -115,7 +116,10 @@ The user interface of StepByStep is designed to be intuitive and user-friendly, 
 
 #### Resident Portal
 
-![ResidentPortal](/doc/main-page.png)
+![ResidentPortal](/doc/profile-information.png)
+![ResidentPorta](/doc/timeline.png)
+![ResidentPorta](/doc/resources.png)
+![ResidentPorta](/doc/calendar.png)
 
 - Description: Interface for residents to view and interact with their intervention plans and communicate with caregivers.
 - Components:
@@ -126,8 +130,6 @@ The user interface of StepByStep is designed to be intuitive and user-friendly, 
   - Satisfaction survey form.
 
 #### Admin Panel
-
-![AdminPanel](/doc/main-page.png)
 
 - Description: Interface for system administrators to manage user accounts, permissions, and overall system settings.
 - Components:
