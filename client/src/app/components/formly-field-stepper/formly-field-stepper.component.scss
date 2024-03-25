@@ -65,3 +65,7 @@
 ::ng-deep input[type="password"] {
   width: -webkit-fill-available !important;
 }
+
+::ng-deep select {
+  width: -webkit-fill-available !important;
+}
