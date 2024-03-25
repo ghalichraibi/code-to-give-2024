@@ -80,7 +80,6 @@ export class ChatComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   sendToRoom(): void {
-    console.log(this.resident);
     const message: Message = {
       channel: this.resident.id,
       senderId: this.userService.user!.id,

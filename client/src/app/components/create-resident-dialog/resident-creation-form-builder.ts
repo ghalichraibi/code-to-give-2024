@@ -34,7 +34,6 @@ export class ResidentFormBuilder {
     );
     const caregivers = response.body;
     if (!caregivers) return [];
-    console.log(caregivers);
     return caregivers.map((caregiver: Caregiver) => ({
       value: caregiver.id,
       label: `${caregiver.firstName} ${caregiver.lastName}`,

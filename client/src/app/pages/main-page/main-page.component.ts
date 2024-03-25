@@ -48,7 +48,6 @@ export class MainPageComponent implements OnDestroy {
   async logInResident() {
     try {
       await this.userService.setResident(this.email);
-      console.log(this.userService.user);
       this.router.navigate(["/resident"]);
     } catch (error) {
       this.displayErrorMessage();

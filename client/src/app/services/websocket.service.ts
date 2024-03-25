@@ -20,7 +20,6 @@ export class WebSocketService {
   }
 
   sendMessage(channelId: string, message: Message): void {
-    console.log("Sending message:", message + " to channel:", channelId);
     this.socket.emit("message:send", { channelId, message });
   }
 
@@ -30,9 +29,7 @@ export class WebSocketService {
 
   async joinChat(channelId: string): Promise<Message[]> {
     return new Promise((resolve) => {
-      console.log("Joining chat with resident:", channelId);
       this.socket.emit("message:join", channelId, (messages: Message[]) => {
-        console.log("Messages:", messages);
         resolve(messages);
       });
     });

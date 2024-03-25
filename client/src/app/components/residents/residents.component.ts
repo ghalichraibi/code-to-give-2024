@@ -38,8 +38,7 @@ export class ResidentsComponent implements OnInit {
   }
 
   modifyInfo(resident: any) {
-    console.log("Modifying info of resident:", resident.id);
-    this.router.navigate(["/modify-resident", resident.id])
+    this.router.navigate(["/modify-resident", resident.id]);
   }
 
   managePlans(residentId: string) {
@@ -71,7 +70,7 @@ export class ResidentsComponent implements OnInit {
   endOfStay(residentId: string) {
     this.matDialog
       .open(EndofstaySurveyComponent, {
-        data: { residentId: residentId }
+        data: { residentId: residentId },
       })
       .afterClosed()
       .subscribe(() => {
