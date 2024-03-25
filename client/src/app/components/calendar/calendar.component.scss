@@ -13,28 +13,42 @@
       .day-header {
         font-weight: bold;
       }
-
-      /* Add this inside .calendar-grid */
-.day {
-    /* existing styles */
-    
-    &.today {
-      background-color: lightblue;
-    }
-  }
-  
   
       .day {
-        height: 50px; /* Adjust based on your needs */
+        height: 65px; /* Adjusted for potential event listing */
         border: 1px solid #ccc;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
         background-color: #f9f9f9;
-      }
-  
-      .not-current {
-        background-color: #e9ecef;
+        padding: 5px;
+        overflow: auto; /* Allows scrolling within a day if many events */
+        
+        &.today {
+          background-color: lightblue;
+        }
+        
+        &.not-current {
+          background-color: #e9ecef;
+        }
+        
+        .date {
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+        
+        .events {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          font-size: 0.75rem;
+          
+          li {
+            background-color: #dff0d8;
+            padding: 2px;
+            margin-top: 2px;
+          }
+        }
       }
     }
-}  
+}
