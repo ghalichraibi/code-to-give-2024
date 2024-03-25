@@ -42,6 +42,8 @@ export class PlansController {
     @Patch('/:id')
     async updatePlan(@Param('id') id: string, @Body() plan: any, @Res() response: Response) {
         try {
+            delete plan._id;
+            delete plan.id;
             const updatedPlan = await this.plansService.updatePlan(id, plan);
             return response.status(HttpStatus.OK).json(updatedPlan);
         } catch (error) {
