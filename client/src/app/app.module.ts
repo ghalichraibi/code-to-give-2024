@@ -1,5 +1,5 @@
 import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from "@angular/core";
+import { NgModule, isDevMode } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -31,6 +31,8 @@ import { FormlyBootstrapModule } from "@ngx-formly/bootstrap";
 import { FormlyFieldStepperComponent } from "./components/formly-field-stepper/formly-field-stepper.component";
 import { EndofstaySurveyComponent } from "./components/endofstay-survey/endofstay-survey.component";
 import { ModifyResidentPageComponent } from "./pages/modify-resident-page/modify-resident-page.component";
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 
 /**
  * Main module that is used in main.ts.
@@ -89,6 +91,12 @@ import { ModifyResidentPageComponent } from "./pages/modify-resident-page/modify
         //   component: RepeatTypeComponent,
         // },
       ],
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
   providers: [],
