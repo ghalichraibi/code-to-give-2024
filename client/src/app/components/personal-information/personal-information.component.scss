@@ -8,11 +8,12 @@
 .column {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .section {
     text-align: center;
-    background-color: rgb(211, 211, 211);
+    background-color: #e0e0e0;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -35,6 +36,18 @@
 }
 
 .current-care-giver{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.significant-people {
+    height: 150px;
+}
+
+.significant-person{
     display: flex;
     flex-direction: row;
     align-items: center;
